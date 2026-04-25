@@ -23,10 +23,6 @@
       "dest": "server/vercel_wsgi.py"
     },
     {
-      "src": "/admin/(.*)",
-      "dest": "server/vercel_wsgi.py"
-    },
-    {
       "handle": "filesystem"
     },
     {

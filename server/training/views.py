@@ -1,8 +1,35 @@
 import razorpay
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import AllowAny
+from django.views.decorators.csrf import csrf_exempt
 from rest_framework.response import Response
 from django.conf import settings
-from .models import Registration
+import base64
+from .models import Registration, Institute, Contributor, Internship
+from .serializers import InstituteSerializer, ContributorSerializer, InternshipSerializer
+
+@csrf_exempt
+def check_admin_auth(request):
+    token = request.headers.get('X-GyanSutra-Admin-Token')
+    if not token:
+        print("Auth failed: No X-GyanSutra-Admin-Token header")
+        return False
+        
+    try:
+        decoded = base64.b64decode(token).decode()
+        username, password = decoded.split(':')
+        
+        target_user = getattr(settings, 'ADMIN_USERNAME', '').strip()
+        target_pass = getattr(settings, 'ADMIN_PASSWORD', '').strip()
+        
+        match = (username.strip() == target_user and password.strip() == target_pass)
+        if not match:
+            print(f"Auth failed: Credentials mismatch for user {username.strip()}")
+        return match
+    except Exception as e:
+        print(f"Auth system error: {str(e)}")
+        return False
+
 
 def get_razorpay_client():
     return razorpay.Client(auth=(
@@ -77,3 +104,117 @@ def verify_payment(request):
         return Response({'status': 'Payment Successful'})
     except Exception as e:
         return Response({'status': 'Failed', 'error': str(e)}, status=400)
+
+# -------------------------------------------------------------------
+# Admin CRUD endpoints (protected by simple Basic Auth)
+# -------------------------------------------------------------------
+
+@api_view(['GET', 'POST'])
+@permission_classes([AllowAny])
+def institute_list(request):
+    if request.method == 'POST' and not check_admin_auth(request):
+        return Response({'detail': 'Unauthorized'}, status=401)
+    if request.method == 'GET':
+        qs = Institute.objects.all()
+        ser = InstituteSerializer(qs, many=True)
+        return Response(ser.data)
+    # POST - create
+    ser = InstituteSerializer(data=request.data)
+    if ser.is_valid():
+        ser.save()
+        return Response(ser.data, status=201)
+    return Response(ser.errors, status=400)
+
+@api_view(['GET', 'PUT', 'DELETE'])
+@permission_classes([AllowAny])
+def institute_detail(request, pk):
+    if not check_admin_auth(request):
+        return Response({'detail': 'Unauthorized'}, status=401)
+    try:
+        obj = Institute.objects.get(pk=pk)
+    except Institute.DoesNotExist:
+        return Response({'detail': 'Not found'}, status=404)
+    if request.method == 'GET':
+        ser = InstituteSerializer(obj)
+        return Response(ser.data)
+    if request.method == 'PUT':
+        ser = InstituteSerializer(obj, data=request.data, partial=True)
+        if ser.is_valid():
+            ser.save()
+            return Response(ser.data)
+        return Response(ser.errors, status=400)
+    # DELETE
+    obj.delete()
+    return Response(status=204)
+
+@api_view(['GET', 'POST'])
+@permission_classes([AllowAny])
+def contributor_list(request):
+    if request.method == 'POST' and not check_admin_auth(request):
+        return Response({'detail': 'Unauthorized'}, status=401)
+    if request.method == 'GET':
+        qs = Contributor.objects.all()
+        ser = ContributorSerializer(qs, many=True)
+        return Response(ser.data)
+    ser = ContributorSerializer(data=request.data)
+    if ser.is_valid():
+        ser.save()
+        return Response(ser.data, status=201)
+    return Response(ser.errors, status=400)
+
+@api_view(['GET', 'PUT', 'DELETE'])
+@permission_classes([AllowAny])
+def contributor_detail(request, pk):
+    if not check_admin_auth(request):
+        return Response({'detail': 'Unauthorized'}, status=401)
+    try:
+        obj = Contributor.objects.get(pk=pk)
+    except Contributor.DoesNotExist:
+        return Response({'detail': 'Not found'}, status=404)
+    if request.method == 'GET':
+        ser = ContributorSerializer(obj)
+        return Response(ser.data)
+    if request.method == 'PUT':
+        ser = ContributorSerializer(obj, data=request.data, partial=True)
+        if ser.is_valid():
+            ser.save()
+            return Response(ser.data)
+        return Response(ser.errors, status=400)
+    obj.delete()
+    return Response(status=204)
+
+@api_view(['GET', 'POST'])
+@permission_classes([AllowAny])
+def internship_list(request):
+    if request.method == 'POST' and not check_admin_auth(request):
+        return Response({'detail': 'Unauthorized'}, status=401)
+    if request.method == 'GET':
+        qs = Internship.objects.all()
+        ser = InternshipSerializer(qs, many=True)
+        return Response(ser.data)
+    ser = InternshipSerializer(data=request.data)
+    if ser.is_valid():
+        ser.save()
+        return Response(ser.data, status=201)
+    return Response(ser.errors, status=400)
+
+@api_view(['GET', 'PUT', 'DELETE'])
+@permission_classes([AllowAny])
+def internship_detail(request, pk):
+    if not check_admin_auth(request):
+        return Response({'detail': 'Unauthorized'}, status=401)
+    try:
+        obj = Internship.objects.get(pk=pk)
+    except Internship.DoesNotExist:
+        return Response({'detail': 'Not found'}, status=404)
+    if request.method == 'GET':
+        ser = InternshipSerializer(obj)
+        return Response(ser.data)
+    if request.method == 'PUT':
+        ser = InternshipSerializer(obj, data=request.data, partial=True)
+        if ser.is_valid():
+            ser.save()
+            return Response(ser.data)
+        return Response(ser.errors, status=400)
+    obj.delete()
+    return Response(status=204)

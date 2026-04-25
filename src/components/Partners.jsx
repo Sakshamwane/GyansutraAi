@@ -1,18 +1,28 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './Partners.css';
 
-const partnerLogos = [
-  "/@fs/Users/apple/.gemini/antigravity/brain/a104276d-4420-4d80-b386-361804e43ac8/partner_logo_1_1776937100487.png",
-  "/@fs/Users/apple/.gemini/antigravity/brain/a104276d-4420-4d80-b386-361804e43ac8/partner_logo_1_1776937100487.png",
-  "/@fs/Users/apple/.gemini/antigravity/brain/a104276d-4420-4d80-b386-361804e43ac8/partner_logo_1_1776937100487.png",
-  "/@fs/Users/apple/.gemini/antigravity/brain/a104276d-4420-4d80-b386-361804e43ac8/partner_logo_1_1776937100487.png",
-  "/@fs/Users/apple/.gemini/antigravity/brain/a104276d-4420-4d80-b386-361804e43ac8/partner_logo_1_1776937100487.png",
-  "/@fs/Users/apple/.gemini/antigravity/brain/a104276d-4420-4d80-b386-361804e43ac8/partner_logo_1_1776937100487.png"
-];
-
 const Partners = () => {
-  const baseLogos = [...partnerLogos, ...partnerLogos, ...partnerLogos, ...partnerLogos];
-  const scrollingLogos = [...baseLogos, ...baseLogos];
+  const [institutes, setInstitutes] = useState([]);
+
+  useEffect(() => {
+    const fetchInstitutes = async () => {
+      try {
+        const res = await axios.get('/api/training/admin/institutes/');
+        setInstitutes(res.data);
+      } catch (err) {
+        console.error("Error fetching institutes:", err);
+      }
+    };
+    fetchInstitutes();
+  }, []);
+
+  // Duplicate logos for smooth infinite scroll if enough logos exist
+  const scrollingInstitutes = institutes.length > 0 
+    ? [...institutes, ...institutes, ...institutes, ...institutes]
+    : [];
+
+  if (institutes.length === 0) return null;
 
   return (
     <section className="section partners-section" id="partners">
@@ -22,9 +32,9 @@ const Partners = () => {
 
       <div className="marquee-container mt-8">
         <div className="marquee-track partners-track">
-          {scrollingLogos.map((logo, index) => (
+          {scrollingInstitutes.map((inst, index) => (
             <div className="partner-logo-wrapper" key={index}>
-              <img src={logo} alt={`Partner College ${index+1}`} className="partner-logo" />
+              <img src={inst.logo_url} alt={inst.name} title={inst.name} className="partner-logo" />
             </div>
           ))}
         </div>

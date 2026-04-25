@@ -7,6 +7,8 @@ import Internships from './pages/Internships';
 import Success from './pages/Success';
 import Contact from './pages/Contact';
 import Contributors from './pages/Contributors';
+import AdminLogin from './pages/admin/login';
+import AdminDashboard from './pages/admin/dashboard';
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
           <Route path="/success" element={<Success />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/contributors" element={<Contributors />} />
+          <Route path="/admin" element={<AdminLogin />} />
+          <Route path="/admin/dashboard" element={<AdminDashboard />} />
         </Routes>
         <Footer />
       </div>

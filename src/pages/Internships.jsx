@@ -1,39 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Target, Download, BookOpen, Clock, Code, X, ShoppingCart, User } from 'lucide-react';
+import { Target, Download, BookOpen, Clock, Code, X, ShoppingCart, User, Sparkles } from 'lucide-react';
 import Hero from '../components/Hero';
 import './Internships.css';
 
-const courseCatalog = [
-  {
-    id: 'fswd',
-    title: 'Full Stack Web Development',
-    image: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&w=800&q=80',
-    tags: ['MERN Stack', 'React', 'Node.js'],
-    students: 440,
-    file: '/curriculum/Application_form_HCLTFP2043381.pdf',
-    plans: {
-      Basic: { price: 1, details: 'Master core frontend to backend concepts and build 1 portfolio project.', features: ['⏳ 2 Months Duration', '💻 Live Classes', '💬 Doubt Solving', '🛠️ 1 Minor Project'] },
-      Pro: { price: 1500, details: 'Advanced deployment, system architecture, and intensive real-world project building.', features: ['⏳ 2 Months Duration', '💻 Live Classes', '🚀 3 Major Projects', '📜 Certification'] },
-      Premium: { price: 3000, details: 'Complete placement guaranteed track with rigorous 1:1 mentorship from industry leads.', features: ['⏳ 2 Months Duration', '🤝 1:1 Mentorship', '🏢 Enterprise Projects', '💼 Placement Guarantee'] }
-    }
-  },
-  {
-    id: 'dsai',
-    title: 'Data Science & GenAI',
-    image: 'https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=800&q=80',
-    tags: ['Python', 'Machine Learning', 'LLMs'],
-    students: 320,
-    file: '/curriculum/data-science.pdf',
-    plans: {
-      Basic: { price: 600, details: 'Python fundamentals, data visualization, and exploratory data analysis.', features: ['⏳ 2 Months Duration', '💻 Live Classes', '📓 Jupyter Tools', '🛠️ 1 Minor Project'] },
-      Pro: { price: 1800, details: 'Deep ML pipelines, NLP fundamentals, and predictive modeling.', features: ['⏳ 2 Months Duration', '🧠 Deep Learning', '🚀 2 Major Projects', '📜 Certification'] },
-      Premium: { price: 3500, details: 'Build RAG Agents, use LangChain, and get end-to-end placement assistance.', features: ['⏳ 2 Months Duration', '🤖 Build AI Agents', '🤝 1:1 Mentorship', '💼 Placement Guarantee'] }
-    }
-  }
-];
-
 const Internships = () => {
+  const [internships, setInternships] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedCourseInfo, setSelectedCourseInfo] = useState({ course: null, plan: null, price: 0 });
   const [formData, setFormData] = useState({
@@ -44,6 +16,18 @@ const Internships = () => {
     year: ''
   });
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const fetchInternships = async () => {
+      try {
+        const res = await axios.get('/api/training/admin/internships/');
+        setInternships(res.data);
+      } catch (err) {
+        console.error("Error fetching internships:", err);
+      }
+    };
+    fetchInternships();
+  }, []);
 
   const handleApplyClick = (courseTitle, planName, price) => {
     setSelectedCourseInfo({ course: courseTitle, plan: planName, price: price });
@@ -71,8 +55,6 @@ const Internships = () => {
       const { order_id, amount, currency, key_id, record_id, error } = res.data;
 
       if (error) throw new Error(error);
-
-
 
       const options = {
         key: key_id,
@@ -119,7 +101,6 @@ const Internships = () => {
   return (
     <div className="training-page">
       <div className="container">
-        {/* Hero Section */}
         <Hero 
           title="Industrial Internship Programs"
           subtitle="If you are an individual looking for rigorous industrial training, globally recognized certifications, and active research work, then explore our premium programs below."
@@ -130,12 +111,18 @@ const Internships = () => {
           minHeight="auto"
         />
 
-        {/* Course Cards */}
         <div className="courses-grid mt-12 animate-fade-in-up delay-200">
-          {courseCatalog.map((course) => (
+          {internships.map((course) => (
             <CourseCard key={course.id} course={course} onApply={handleApplyClick} />
           ))}
         </div>
+
+        {internships.length === 0 && (
+          <div className="text-center mt-20">
+            <h3 className="gradient-text">Exciting Programs Coming Soon!</h3>
+            <p className="subtitle">We're finalizing our latest industrial training modules. Check back shortly.</p>
+          </div>
+        )}
       </div>
 
       {modalOpen && (
@@ -185,51 +172,61 @@ const Internships = () => {
   );
 };
 
-/* Sub-component for individual cards to hold their own Select logic cleanly */
 const CourseCard = ({ course, onApply }) => {
   const [activePlan, setActivePlan] = useState('Basic');
-  const planData = course.plans[activePlan];
+  
+  // Handle dynamic plans from API
+  const plans = Array.isArray(course.plans) ? course.plans : [];
+  const currentPlan = plans.find(p => p.name === activePlan) || plans[0] || { name: 'Basic', price: course.price, features: [] };
+  
+  // Combine core bullet points with plan features
+  const allFeatures = [...(course.bullet_points || []), ...(currentPlan.features || [])];
 
   return (
     <div className="course-card">
       <div className="course-image-wrapper">
-        <img src={course.image} alt={course.title} className="course-image" />
+        <img src={course.image_url} alt={course.title} className="course-image" />
         <div className="course-bookmark">
           <Target size={18} />
         </div>
       </div>
 
       <div className="course-body">
-        <a href={course.file} className="curriculum-link" download title="Curriculum">
-          <Download size={14} className="mr-1" /> Download Curriculum
-        </a>
+        <div className="curriculum-link-wrapper">
+          <span className="curriculum-link">
+             <BookOpen size={14} className="mr-1" /> Training Module
+          </span>
+        </div>
         
         <h3 className="course-title-new">{course.title}</h3>
         
         <div className="course-meta">
-          <span className="meta-item"><User size={14} className="mr-1" /> {course.students}</span>
+          <span className="meta-item"><User size={14} className="mr-1" /> 500+ Enrolled</span>
+          <span className="meta-item"><Clock size={14} className="ml-2 mr-1" /> 2 Months</span>
         </div>
 
         <div className="course-author">
           <div className="author-avatar">GS</div>
           <div className="author-info">
             <span className="author-name">By GyanSutra AI</span>
-            <span className="author-category">In Internships</span>
+            <span className="author-category">Professional Track</span>
           </div>
         </div>
 
-        <div className="plan-selector">
-          <select value={activePlan} onChange={(e) => setActivePlan(e.target.value)} className="plan-dropdown">
-            <option value="Basic">Basic Plan</option>
-            <option value="Pro">Pro Plan</option>
-            <option value="Premium">Premium Plan</option>
-          </select>
-        </div>
+        {plans.length > 0 && (
+          <div className="plan-selector">
+            <select value={activePlan} onChange={(e) => setActivePlan(e.target.value)} className="plan-dropdown">
+              {plans.map(p => (
+                <option key={p.name} value={p.name}>{p.name} Plan</option>
+              ))}
+            </select>
+          </div>
+        )}
 
         <div className="plan-details animate-fade-in-up">
           <ul className="plan-features">
-            {planData.features.map((feat, i) => (
-              <li key={i}>{feat}</li>
+            {allFeatures.map((feat, i) => (
+              <li key={i}><Sparkles size={12} className="mr-1 text-blue-400" /> {feat}</li>
             ))}
           </ul>
         </div>
@@ -237,10 +234,10 @@ const CourseCard = ({ course, onApply }) => {
 
       <div className="course-footer">
         <div className="course-pricing">
-          <span className="price-original">₹{(planData.price * 2).toLocaleString('en-IN')}.00</span>
-          <span className="price-current">₹{planData.price.toLocaleString('en-IN')}.00</span>
+          <span className="price-original">₹{(parseFloat(currentPlan.price || 0) * 1.5).toFixed(0)}</span>
+          <span className="price-current">₹{parseFloat(currentPlan.price || 0).toLocaleString('en-IN')}</span>
         </div>
-        <button className="btn-enroll-outline" onClick={() => onApply(course.title, activePlan, planData.price)}>
+        <button className="btn-enroll-outline" onClick={() => onApply(course.title, currentPlan.name, currentPlan.price)}>
           <ShoppingCart size={16} className="mr-2" /> Enroll Now
         </button>
       </div>

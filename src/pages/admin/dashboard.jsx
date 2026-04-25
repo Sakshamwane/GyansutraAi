@@ -1,0 +1,69 @@
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import InstituteAdmin from "../../components/admin/InstituteAdmin";
+import ContributorAdmin from "../../components/admin/ContributorAdmin";
+import InternshipAdmin from "../../components/admin/InternshipAdmin";
+import "../../styles/admin.css";
+
+const AdminDashboard = () => {
+  const [activeTab, setActiveTab] = useState("institutes");
+  const [isAuthorized, setIsAuthorized] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("adminToken");
+    if (!token) {
+      navigate("/admin");
+    } else {
+      setIsAuthorized(true);
+    }
+  }, [navigate]);
+
+  const handleLogout = () => {
+    localStorage.removeItem("adminToken");
+    navigate("/admin");
+  };
+
+  if (!isAuthorized) return null;
+
+  return (
+    <div className="admin-dashboard">
+      <header className="admin-header">
+        <h1 className="gradient-text font-bold">Admin Panel</h1>
+        <div className="admin-actions">
+          <span className="admin-user-badge">Logged in as Admin</span>
+          <button onClick={handleLogout} className="btn btn-secondary" style={{ marginLeft: '1rem' }}>Logout</button>
+        </div>
+      </header>
+
+      <div className="admin-tabs">
+        <button 
+          className={`tab-btn ${activeTab === "institutes" ? "active" : ""}`}
+          onClick={() => setActiveTab("institutes")}
+        >
+          Institutes
+        </button>
+        <button 
+          className={`tab-btn ${activeTab === "contributors" ? "active" : ""}`}
+          onClick={() => setActiveTab("contributors")}
+        >
+          Contributors
+        </button>
+        <button 
+          className={`tab-btn ${activeTab === "internships" ? "active" : ""}`}
+          onClick={() => setActiveTab("internships")}
+        >
+          Internships
+        </button>
+      </div>
+
+      <div className="admin-content-card">
+        {activeTab === "institutes" && <InstituteAdmin />}
+        {activeTab === "contributors" && <ContributorAdmin />}
+        {activeTab === "internships" && <InternshipAdmin />}
+      </div>
+    </div>
+  );
+};
+
+export default AdminDashboard;

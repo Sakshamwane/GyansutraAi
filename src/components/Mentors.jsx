@@ -1,32 +1,23 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './Mentors.css';
 import { Star, Building } from 'lucide-react';
 
-const mentorData = [
-  {
-    name: "Rohan Sharma",
-    role: "ML Engineer",
-    company: "Google",
-    image: "/@fs/Users/apple/.gemini/antigravity/brain/a104276d-4420-4d80-b386-361804e43ac8/mentor_1_1776937082773.png",
-    achievements: ["Built GenAI systems", "Ex-Amazon", "150+ mentees placed"]
-  },
-  {
-    name: "Aisha Patel",
-    role: "SDE II",
-    company: "Microsoft",
-    image: "/@fs/Users/apple/.gemini/antigravity/brain/a104276d-4420-4d80-b386-361804e43ac8/mentor_1_1776937082773.png",
-    achievements: ["Cloud infrastructure", "Top 1% Leetcode", "Interviewed 200+ candidates"]
-  },
-  {
-    name: "Vikram Singh",
-    role: "Senior SDE",
-    company: "Meta",
-    image: "/@fs/Users/apple/.gemini/antigravity/brain/a104276d-4420-4d80-b386-361804e43ac8/mentor_1_1776937082773.png",
-    achievements: ["System Design expert", "Open source contributor", "Led 50+ workshops"]
-  }
-];
-
 const Mentors = () => {
+  const [contributors, setContributors] = useState([]);
+
+  useEffect(() => {
+    const fetchContributors = async () => {
+      try {
+        const res = await axios.get('/api/training/admin/contributors/');
+        setContributors(res.data);
+      } catch (err) {
+        console.error("Error fetching contributors:", err);
+      }
+    };
+    fetchContributors();
+  }, []);
+
   return (
     <section className="section mentors-section" id="mentors">
       <div className="container">
@@ -36,28 +27,39 @@ const Mentors = () => {
         </div>
         
         <div className="mentors-grid mt-4">
-          {mentorData.map((mentor, index) => (
-            <div className="mentor-card" key={index}>
-              <div className="mentor-image-wrapper">
-                <img src={mentor.image} alt={mentor.name} className="mentor-image" />
-                <div className="mentor-badge">
-                  <Star size={12} className="mr-1" /> Top Mentor
+          {contributors.map((mentor, index) => {
+            const achievementsList = typeof mentor.achievements === 'string' 
+              ? mentor.achievements.split(/,|\n/).filter(a => a.trim() !== "")
+              : (mentor.achievements || []);
+
+            return (
+              <div className="mentor-card" key={index}>
+                <div className="mentor-image-wrapper">
+                  <img src={mentor.image_url} alt={mentor.name} className="mentor-image" />
+                  <div className="mentor-badge">
+                    <Star size={12} className="mr-1" /> Top Contributor
+                  </div>
+                </div>
+                <div className="mentor-content">
+                  <h3 className="mentor-name">{mentor.name}</h3>
+                  <div className="mentor-role">
+                    <Building size={14} className="mr-1" /> {mentor.position} @ {mentor.company}
+                  </div>
+                  <ul className="mentor-achievements">
+                    {achievementsList.map((item, i) => (
+                      <li key={i}>{item.trim()}</li>
+                    ))}
+                  </ul>
                 </div>
               </div>
-              <div className="mentor-content">
-                <h3 className="mentor-name">{mentor.name}</h3>
-                <div className="mentor-role">
-                  <Building size={14} className="mr-1" /> {mentor.role} @ {mentor.company}
-                </div>
-                <ul className="mentor-achievements">
-                  {mentor.achievements.map((item, i) => (
-                    <li key={i}>{item}</li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
+        {contributors.length === 0 && (
+          <div className="text-center mt-8">
+            <p className="subtitle">Stay tuned! Our mission drivers are joining soon.</p>
+          </div>
+        )}
       </div>
     </section>
   );

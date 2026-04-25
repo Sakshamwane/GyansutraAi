@@ -16,7 +16,7 @@ const Navbar = () => {
           <li><Link to="/contact">Contact Us</Link></li>
         </ul>
         <div className="navbar-cta">
-          <button className="btn btn-primary">Login</button>
+          <Link to="/admin" className="btn btn-primary">Admin</Link>
         </div>
       </div>
     </nav>

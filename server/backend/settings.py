@@ -26,7 +26,11 @@ SECRET_KEY = 'django-insecure-0xh&jm*@hk!^2p=elj6v+jb$szg$+*&zqz!#l(^mc*vty8y156
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# Admin credentials for simple dashboard login
+ADMIN_USERNAME = "admins@gyansutra"
+ADMIN_PASSWORD = "Gyansutra@pass123"
+
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -55,7 +59,6 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
-ALLOWED_HOSTS = ['*']
 
 # Ensure this ends the INSTALLED_APPS and MIDDLEWARE updates correctly.
 
