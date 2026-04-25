@@ -3,7 +3,7 @@
 }
 
 .text-center {
-  text-align: center;
+  text-align: justify;
 }
 
 .contact-header {
@@ -134,7 +134,7 @@
 .social-section {
   padding: 1.5rem;
   border-radius: var(--radius-lg);
-  text-align: center;
+  text-align: justify;
 }
 
 .social-section h3 {
@@ -204,6 +204,6 @@
   .info-card {
     flex-direction: column;
     align-items: center;
-    text-align: center;
+    text-align: justify;
   }
 }

@@ -29,6 +29,8 @@ body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
   line-height: 1.6;
+  text-align: justify;
+  hyphens: auto;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
@@ -80,6 +82,10 @@ button {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1.5rem;
+}
+
+.text-center {
+  text-align: justify !important;
 }
 
 .section {

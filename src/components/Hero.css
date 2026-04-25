@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
+  text-align: justify;
   padding-top: 80px; /* navbar offset */
   overflow: hidden;
 }

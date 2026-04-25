@@ -36,7 +36,7 @@
 }
 
 .admin-login-form h2 {
-  text-align: center;
+  text-align: justify;
   margin-bottom: 1rem;
   font-size: 2rem;
 }
@@ -57,7 +57,7 @@
 
 .error-msg {
   color: #ef4444;
-  text-align: center;
+  text-align: justify;
   font-size: 0.9rem;
 }
 
@@ -168,7 +168,7 @@
   .admin-header {
     flex-direction: column;
     gap: 1.5rem;
-    text-align: center;
+    text-align: justify;
   }
   
   .admin-tabs {

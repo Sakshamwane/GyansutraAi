@@ -154,7 +154,7 @@
   
   .cta-content {
     max-width: 100%;
-    text-align: center;
+    text-align: justify;
     order: 2; /* Image top on mobile, content below */
   }
 
