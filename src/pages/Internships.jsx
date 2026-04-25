@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Target, Download, BookOpen, Clock, Code, X, ShoppingCart, User, Sparkles } from 'lucide-react';
+import { Target, Download, BookOpen, Clock, Code, X, ShoppingCart, User, Sparkles, Briefcase } from 'lucide-react';
 import Hero from '../components/Hero';
 import './Internships.css';
 
@@ -110,6 +110,16 @@ const Internships = () => {
           showCta={false}
           minHeight="auto"
         />
+        {/* Real-World Experience section moved from CTA */}
+        <div className="cta-content animate-fade-in-up">
+          <div className="cta-badge">
+            <Briefcase size={16} />
+            <span>Real-World Experience</span>
+          </div>
+          <h2 className="cta-title">
+            Bridge the Gap Between <span className="gradient-text">Campus and Corporate.</span>
+          </h2>
+        </div>
 
         <div className="courses-grid mt-12 animate-fade-in-up delay-200">
           {internships.map((course) => (
