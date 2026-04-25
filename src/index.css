@@ -29,8 +29,6 @@ body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
   line-height: 1.6;
-  text-align: justify;
-  hyphens: auto;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
@@ -84,9 +82,6 @@ button {
   padding: 0 1.5rem;
 }
 
-.text-center {
-  text-align: justify !important;
-}
 
 .section {
   padding: 5rem 0;
@@ -104,6 +99,7 @@ button {
   font-size: 1.125rem;
   color: var(--text-secondary);
   font-weight: 400;
+  text-align: justify;
 }
 
 .gradient-text {

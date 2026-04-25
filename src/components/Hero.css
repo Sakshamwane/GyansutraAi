@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: justify;
+  text-align: center;
   padding-top: 80px; /* navbar offset */
   overflow: hidden;
 }
@@ -57,11 +57,14 @@
   color: var(--text-primary);
 }
 
+
+
 .hero-subtitle {
   font-size: 1.25rem;
   color: var(--text-secondary);
   margin-bottom: 3rem;
   max-width: 600px;
+  text-align: justify;
 }
 
 .hero-cta {
@@ -107,6 +110,8 @@
   color: var(--text-secondary);
   font-weight: 500;
 }
+
+
 
 .stat-divider {
   width: 1px;

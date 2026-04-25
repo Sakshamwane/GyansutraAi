@@ -3,7 +3,7 @@
 }
 
 .text-center {
-  text-align: justify;
+  text-align: center;
 }
 
 .contact-header {
@@ -124,6 +124,7 @@
   font-size: 0.95rem;
   color: var(--text-secondary);
   margin-bottom: 0.5rem;
+  text-align: justify;
 }
 
 .mt-2 {
@@ -134,7 +135,7 @@
 .social-section {
   padding: 1.5rem;
   border-radius: var(--radius-lg);
-  text-align: justify;
+  text-align: center;
 }
 
 .social-section h3 {
@@ -148,6 +149,7 @@
   font-size: 0.95rem;
   color: var(--text-secondary);
   margin-bottom: 1rem;
+  text-align: justify;
 }
 
 .social-links {
@@ -204,6 +206,6 @@
   .info-card {
     flex-direction: column;
     align-items: center;
-    text-align: justify;
+    text-align: center;
   }
 }
