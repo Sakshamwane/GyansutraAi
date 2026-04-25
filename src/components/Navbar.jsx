@@ -22,16 +22,12 @@ const Navbar = () => {
             <li><Link to="/internships" onClick={() => setIsOpen(false)}>Internships</Link></li>
             <li><Link to="/contributors" onClick={() => setIsOpen(false)}>Contributors</Link></li>
             <li><Link to="/contact" onClick={() => setIsOpen(false)}>Contact Us</Link></li>
-            <li className="mobile-only">
-              <Link to="/admin" className="btn btn-primary" onClick={() => setIsOpen(false)}>Admin</Link>
-            </li>
+
           </ul>
         </div>
 
         <div className="navbar-actions">
-          <div className="navbar-cta desktop-only">
-            <Link to="/admin" className="btn btn-primary">Admin</Link>
-          </div>
+
           
           <button className={`mobile-menu-toggle ${isOpen ? 'active' : ''}`} onClick={toggleMenu} aria-label="Toggle menu">
             <span className="bar"></span>
