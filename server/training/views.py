@@ -14,27 +14,27 @@ def get_razorpay_client():
 def register(request):
     client = get_razorpay_client()
     data = request.data
-    # Create DB record
-    record = Registration.objects.create(
-        name=data.get('name'),
-        email=data.get('email'),
-        phone=data.get('phone'),
-        college=data.get('college'),
-        year=data.get('year'),
-        course=data.get('course', 'General'),
-        plan=data.get('plan', 'Basic'),
-    )
-    
-    # Create Razorpay Order
-    frontend_amount = data.get('amount', 500)
-    amount = int(frontend_amount) * 100  # Amount is in paise
-    order_data = {
-        "amount": amount,
-        "currency": "INR",
-        "receipt": f"receipt_{record.id}",
-    }
-    
     try:
+        # Create DB record
+        record = Registration.objects.create(
+            name=data.get('name'),
+            email=data.get('email'),
+            phone=data.get('phone'),
+            college=data.get('college'),
+            year=data.get('year'),
+            course=data.get('course', 'General'),
+            plan=data.get('plan', 'Basic'),
+        )
+        
+        # Create Razorpay Order
+        frontend_amount = data.get('amount', 500)
+        amount = int(frontend_amount) * 100  # Amount is in paise
+        order_data = {
+            "amount": amount,
+            "currency": "INR",
+            "receipt": f"receipt_{record.id}",
+        }
+        
         payment = client.order.create(data=order_data)
         record.razorpay_order_id = payment['id']
         record.save()
@@ -43,7 +43,7 @@ def register(request):
             'order_id': payment['id'],
             'amount': payment['amount'],
             'currency': payment['currency'],
-            'key_id': settings.RAZORPAY_KEY_ID,
+            'key_id': getattr(settings, 'RAZORPAY_KEY_ID', ''),
             'record_id': record.id
         })
     except Exception as e:
