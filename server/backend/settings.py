@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -81,7 +82,7 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
-import os
+
 
 # To use Supabase PostgreSQL, add SUPABASE_DB_URL to your .env file
 # Example: SUPABASE_DB_URL=postgres://postgres.[project]:[password]@aws-0-eu-central-1.pooler.supabase.com:6543/postgres
@@ -136,7 +137,6 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 # Razorpay Configuration
-# In production (Vercel), these should be set in the Environment Variables dashboard
 RAZORPAY_KEY_ID = os.environ.get('RAZORPAY_KEY_ID', 'rzp_live_ShQZVXEFEc969t')
 RAZORPAY_KEY_SECRET = os.environ.get('RAZORPAY_KEY_SECRET', 'PrOlBOC5TbL2O97PoBUp3Lfq')
 

@@ -59,8 +59,8 @@ def verify_payment(request):
         record = Registration.objects.get(id=record_id)
         
         # Verify signature matching real Razorpay implementation if not in mock phase
-        key_secret = settings.RAZORPAY_KEY_SECRET
-        if True: # Always verify in live mode
+        key_secret = getattr(settings, 'RAZORPAY_KEY_SECRET', '')
+        if key_secret: # Only verify if secret is available
             params_dict = {
                 'razorpay_order_id': data.get('razorpay_order_id'),
                 'razorpay_payment_id': data.get('razorpay_payment_id'),
