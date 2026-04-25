@@ -109,7 +109,8 @@ const Internships = () => {
       }
     } catch (err) {
       console.error(err);
-      const errorMsg = err.response?.data?.error || err.message || 'Something went wrong';
+      let errorMsg = err.response?.data?.error || err.message || 'Something went wrong';
+      if (typeof errorMsg === 'object') errorMsg = JSON.stringify(errorMsg);
       alert('Error processing request: ' + errorMsg);
     }
     setLoading(false);

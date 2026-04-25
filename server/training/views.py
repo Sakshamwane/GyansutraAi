@@ -4,12 +4,15 @@ from rest_framework.response import Response
 from django.conf import settings
 from .models import Registration
 
-# Initialize Razorpay Client
-# We mock it or use env variables. Since we're providing code to user, we'll use a placeholder.
-client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET))
+def get_razorpay_client():
+    return razorpay.Client(auth=(
+        getattr(settings, 'RAZORPAY_KEY_ID', ''), 
+        getattr(settings, 'RAZORPAY_KEY_SECRET', '')
+    ))
 
 @api_view(['POST'])
 def register(request):
+    client = get_razorpay_client()
     data = request.data
     # Create DB record
     record = Registration.objects.create(
@@ -48,6 +51,7 @@ def register(request):
 
 @api_view(['POST'])
 def verify_payment(request):
+    client = get_razorpay_client()
     data = request.data
     record_id = data.get('record_id')
     
