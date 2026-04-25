@@ -22,6 +22,7 @@ const Navbar = () => {
             <li><Link to="/internships" onClick={() => setIsOpen(false)}>Internships</Link></li>
             <li><Link to="/contributors" onClick={() => setIsOpen(false)}>Contributors</Link></li>
             <li><Link to="/contact" onClick={() => setIsOpen(false)}>Contact Us</Link></li>
+            <li><a href="https://lms.gyansutra.com/" target="_blank" rel="noopener noreferrer" onClick={() => setIsOpen(false)}>LMS</a></li>
 
           </ul>
         </div>
