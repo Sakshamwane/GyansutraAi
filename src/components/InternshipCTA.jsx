@@ -9,7 +9,13 @@ const InternshipCTA = () => {
       <div className="container">
         <div className="cta-grid">
           <div className="cta-content animate-fade-in-up">
-
+            <div className="cta-badge">
+              <Briefcase size={16} />
+              <span>Real-World Experience</span>
+            </div>
+            <h2 className="cta-title">
+              Bridge the Gap Between <span className="gradient-text">Campus and Corporate.</span>
+            </h2>
             <p className="cta-description">
               Stop watching tutorials and start shipping real code. Our immersive industrial internships plug you directly into production-grade projects, mentored by elite engineers from top tech companies.
             </p>
