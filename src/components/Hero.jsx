@@ -49,17 +49,17 @@ const Hero = ({
         {showStats && (
           <div className="hero-stats delay-300">
             <div className="stat-item">
-              <span className="stat-number">10K+</span>
+              <span className="stat-number">100+</span>
               <span className="stat-label">Students</span>
             </div>
             <div className="stat-divider"></div>
             <div className="stat-item">
-              <span className="stat-number">500+</span>
+              <span className="stat-number">5+</span>
               <span className="stat-label">Mentors</span>
             </div>
             <div className="stat-divider"></div>
             <div className="stat-item">
-              <span className="stat-number">50+</span>
+              <span className="stat-number">5+</span>
               <span className="stat-label">Partner Colleges</span>
             </div>
           </div>
