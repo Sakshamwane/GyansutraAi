@@ -101,3 +101,14 @@
   color: var(--accent-purple);
   font-weight: bold;
 }
+
+@media (max-width: 768px) {
+  .mentors-section {
+    padding: 4rem 0;
+  }
+  
+  .mentors-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}

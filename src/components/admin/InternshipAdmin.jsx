@@ -180,27 +180,29 @@ const InternshipAdmin = () => {
         {editingId && <button type="button" onClick={resetForm}>Cancel</button>}
       </form>
 
-      <table className="admin-table">
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Price</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {Array.isArray(internships) && internships.map(i => (
-            <tr key={i.id}>
-              <td>{i.title}</td>
-              <td>₹{i.price}</td>
-              <td>
-                <button onClick={() => handleEdit(i)} className="action-btn btn-edit">Edit</button>
-                <button onClick={() => handleDelete(i.id)} className="action-btn btn-delete">Delete</button>
-              </td>
+      <div className="admin-table-container">
+        <table className="admin-table">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Price</th>
+              <th>Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {Array.isArray(internships) && internships.map(i => (
+              <tr key={i.id}>
+                <td>{i.title}</td>
+                <td>₹{i.price}</td>
+                <td>
+                  <button onClick={() => handleEdit(i)} className="action-btn btn-edit">Edit</button>
+                  <button onClick={() => handleDelete(i.id)} className="action-btn btn-delete">Delete</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
       {(!Array.isArray(internships) || internships.length === 0) && <p style={{textAlign: 'center', padding: '2rem'}}>No internships found.</p>}
     </div>
   );

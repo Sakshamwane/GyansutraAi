@@ -109,27 +109,29 @@ const ContributorAdmin = () => {
         {editingId && <button type="button" onClick={() => {setEditingId(null); setFormData({name: "", image_url: "", company: "", position: "", achievements: ""})}}>Cancel</button>}
       </form>
 
-      <table className="admin-table">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Company</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {Array.isArray(contributors) && contributors.map(c => (
-            <tr key={c.id}>
-              <td>{c.name}</td>
-              <td>{c.company} ({c.position})</td>
-              <td>
-                <button onClick={() => handleEdit(c)} className="action-btn btn-edit">Edit</button>
-                <button onClick={() => handleDelete(c.id)} className="action-btn btn-delete">Delete</button>
-              </td>
+      <div className="admin-table-container">
+        <table className="admin-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Company</th>
+              <th>Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {Array.isArray(contributors) && contributors.map(c => (
+              <tr key={c.id}>
+                <td>{c.name}</td>
+                <td>{c.company} ({c.position})</td>
+                <td>
+                  <button onClick={() => handleEdit(c)} className="action-btn btn-edit">Edit</button>
+                  <button onClick={() => handleDelete(c.id)} className="action-btn btn-delete">Delete</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
       {(!Array.isArray(contributors) || contributors.length === 0) && <p style={{textAlign: 'center', padding: '2rem'}}>No contributors found.</p>}
     </div>
   );

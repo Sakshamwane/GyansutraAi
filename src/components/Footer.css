@@ -78,8 +78,21 @@
 }
 
 @media (max-width: 768px) {
+  .footer {
+    padding: 3rem 0 2rem;
+  }
+  
   .footer-grid {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 3rem;
+    text-align: center;
+  }
+  
+  .footer-desc {
+    margin: 0 auto 2rem;
+  }
+  
+  .social-links {
+    justify-content: center;
   }
 }

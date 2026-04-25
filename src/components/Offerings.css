@@ -57,3 +57,14 @@
   font-size: 0.95rem;
   line-height: 1.5;
 }
+
+@media (max-width: 768px) {
+  .offerings-section {
+    padding: 4rem 0;
+  }
+  
+  .offerings-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}

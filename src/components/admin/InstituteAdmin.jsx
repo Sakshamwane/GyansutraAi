@@ -89,27 +89,29 @@ const InstituteAdmin = () => {
         {editingId && <button type="button" onClick={() => {setEditingId(null); setFormData({name: "", logo_url: ""})}}>Cancel</button>}
       </form>
 
-      <table className="admin-table">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Logo</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {Array.isArray(institutes) && institutes.map(inst => (
-            <tr key={inst.id}>
-              <td>{inst.name}</td>
-              <td><img src={inst.logo_url} alt={inst.name} style={{height: "30px"}} /></td>
-              <td>
-                <button onClick={() => handleEdit(inst)} className="action-btn btn-edit">Edit</button>
-                <button onClick={() => handleDelete(inst.id)} className="action-btn btn-delete">Delete</button>
-              </td>
+      <div className="admin-table-container">
+        <table className="admin-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Logo</th>
+              <th>Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {Array.isArray(institutes) && institutes.map(inst => (
+              <tr key={inst.id}>
+                <td>{inst.name}</td>
+                <td><img src={inst.logo_url} alt={inst.name} style={{height: "30px"}} /></td>
+                <td>
+                  <button onClick={() => handleEdit(inst)} className="action-btn btn-edit">Edit</button>
+                  <button onClick={() => handleDelete(inst.id)} className="action-btn btn-delete">Delete</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
       {(!Array.isArray(institutes) || institutes.length === 0) && <p style={{textAlign: 'center', padding: '2rem'}}>No institutes found.</p>}
     </div>
   );
