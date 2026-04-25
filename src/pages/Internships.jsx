@@ -13,7 +13,7 @@ const courseCatalog = [
     students: 440,
     file: '/curriculum/Application_form_HCLTFP2043381.pdf',
     plans: {
-      Basic: { price: 500, details: 'Master core frontend to backend concepts and build 1 portfolio project.', features: ['⏳ 2 Months Duration', '💻 Live Classes', '💬 Doubt Solving', '🛠️ 1 Minor Project'] },
+      Basic: { price: 1, details: 'Master core frontend to backend concepts and build 1 portfolio project.', features: ['⏳ 2 Months Duration', '💻 Live Classes', '💬 Doubt Solving', '🛠️ 1 Minor Project'] },
       Pro: { price: 1500, details: 'Advanced deployment, system architecture, and intensive real-world project building.', features: ['⏳ 2 Months Duration', '💻 Live Classes', '🚀 3 Major Projects', '📜 Certification'] },
       Premium: { price: 3000, details: 'Complete placement guaranteed track with rigorous 1:1 mentorship from industry leads.', features: ['⏳ 2 Months Duration', '🤝 1:1 Mentorship', '🏢 Enterprise Projects', '💼 Placement Guarantee'] }
     }
