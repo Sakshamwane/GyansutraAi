@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Target, Download, BookOpen, Clock, Code, X, ShoppingCart, User, Sparkles } from 'lucide-react';
-import Hero from '../components/Hero';
+import { Target, Download, BookOpen, Clock, Code, X, ShoppingCart, User, Sparkles, Briefcase, CheckCircle2, ArrowRight } from 'lucide-react';
+// Hero component removed – CTA now serves as the hero section
 import './Internships.css';
+import { Link } from 'react-router-dom';
 
 const Internships = () => {
   const [internships, setInternships] = useState([]);
