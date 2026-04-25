@@ -26,10 +26,12 @@ const Offerings = () => {
         <div className="offerings-grid mt-4">
           {offeringData.map((item, index) => (
             <div className="offering-card" key={index}>
-              <div className="offering-icon">
-                {item.icon}
+              <div className="offering-card-header">
+                <div className="offering-icon">
+                  {item.icon}
+                </div>
+                <h3 className="offering-title">{item.title}</h3>
               </div>
-              <h3 className="offering-title">{item.title}</h3>
               <p className="offering-desc">{item.desc}</p>
             </div>
           ))}
