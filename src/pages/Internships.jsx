@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Target, Download, BookOpen, Clock, Code, X, ShoppingCart, User, Sparkles, Briefcase, CheckCircle2, ArrowRight } from 'lucide-react';
+import { Target, Download, BookOpen, Clock, Code, X, ShoppingCart, User, Sparkles, Briefcase, CheckCircle, ArrowRight } from 'lucide-react';
 // Hero component removed – CTA now serves as the hero section
 import './Internships.css';
 import { Link } from 'react-router-dom';
@@ -118,9 +118,9 @@ const Internships = () => {
                   Stop watching tutorials and start shipping real code. Our immersive industrial internships plug you directly into production‑grade projects, mentored by elite engineers from top tech companies.
                 </p>
                 <ul className="cta-highlights">
-                  <li><CheckCircle2 size={18} className="highlight-icon" /> Live Enterprise Projects</li>
-                  <li><CheckCircle2 size={18} className="highlight-icon" /> 1:1 Industry Mentorship</li>
-                  <li><CheckCircle2 size={18} className="highlight-icon" /> Guaranteed Pre‑Placement Assistance</li>
+                  <li><CheckCircle size={18} className="highlight-icon" /> Live Enterprise Projects</li>
+                  <li><CheckCircle size={18} className="highlight-icon" /> 1:1 Industry Mentorship</li>
+                  <li><CheckCircle size={18} className="highlight-icon" /> Guaranteed Pre‑Placement Assistance</li>
                 </ul>
                 <Link to="/internships" className="btn btn-primary btn-lg mt-6">
                   Claim Your Spot <ArrowRight size={18} className="ml-2" />
