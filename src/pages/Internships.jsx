@@ -72,17 +72,7 @@ const Internships = () => {
 
       if (error) throw new Error(error);
 
-      if (key_id === 'test_key') {
-        alert(`Mock Mode Activated. Simulating a successful ₹${selectedCourseInfo.price} payment...`);
-        await axios.post(`${API_BASE}/api/training/verify-payment/`, {
-          razorpay_payment_id: 'pay_mock123',
-          razorpay_order_id: order_id,
-          razorpay_signature: 'signature_mock',
-          record_id: record_id
-        });
-        window.location.href = '/success';
-        return;
-      }
+
 
       const options = {
         key: key_id,

@@ -6,7 +6,7 @@ from .models import Registration
 
 # Initialize Razorpay Client
 # We mock it or use env variables. Since we're providing code to user, we'll use a placeholder.
-client = razorpay.Client(auth=(getattr(settings, 'RAZORPAY_KEY_ID', 'test_key'), getattr(settings, 'RAZORPAY_KEY_SECRET', 'test_secret')))
+client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET))
 
 @api_view(['POST'])
 def register(request):
@@ -40,18 +40,11 @@ def register(request):
             'order_id': payment['id'],
             'amount': payment['amount'],
             'currency': payment['currency'],
-            'key_id': getattr(settings, 'RAZORPAY_KEY_ID', 'test_key'),
+            'key_id': settings.RAZORPAY_KEY_ID,
             'record_id': record.id
         })
     except Exception as e:
-        # Fallback if Razorpay API keys not working (for local testing mockup)
-        return Response({
-            'order_id': 'order_mock123',
-            'amount': amount,
-            'currency': 'INR',
-            'key_id': 'test_key',
-            'record_id': record.id
-        })
+        return Response({'error': str(e)}, status=400)
 
 @api_view(['POST'])
 def verify_payment(request):
@@ -62,8 +55,8 @@ def verify_payment(request):
         record = Registration.objects.get(id=record_id)
         
         # Verify signature matching real Razorpay implementation if not in mock phase
-        key_secret = getattr(settings, 'RAZORPAY_KEY_SECRET', 'test_secret')
-        if key_secret != 'test_secret':
+        key_secret = settings.RAZORPAY_KEY_SECRET
+        if True: # Always verify in live mode
             params_dict = {
                 'razorpay_order_id': data.get('razorpay_order_id'),
                 'razorpay_payment_id': data.get('razorpay_payment_id'),

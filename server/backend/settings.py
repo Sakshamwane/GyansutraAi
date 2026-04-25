@@ -135,7 +135,8 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-# Razorpay Test Configuration 
-RAZORPAY_KEY_ID = 'rzp_test_SguN6kO40r4DBz'
-RAZORPAY_KEY_SECRET = '1TaLxPrF2fxCBTje8BtIs9d6'
+# Razorpay Configuration
+# In production (Vercel), these should be set in the Environment Variables dashboard
+RAZORPAY_KEY_ID = os.environ.get('RAZORPAY_KEY_ID', 'rzp_live_ShQZVXEFEc969t')
+RAZORPAY_KEY_SECRET = os.environ.get('RAZORPAY_KEY_SECRET', 'PrOlBOC5TbL2O97PoBUp3Lfq')
 
