@@ -1,48 +1,88 @@
 import React from 'react';
-import { Layout, Shield, Zap, BarChart, Users, Globe, BookOpen, MessageSquare } from 'lucide-react';
+import { Briefcase, Calendar, FileText, Bot, BookOpen, Users, GraduationCap, Microscope, Code, Award, CheckCircle } from 'lucide-react';
 import './Features.css';
 
 const Features = () => {
-  const features = [
+  const featureList = [
     {
-      icon: <Layout className="feature-icon" />,
-      title: "Interactive LMS",
-      description: "A seamless, intuitive learning management system designed for modern students. Track your progress with ease."
+      id: "jobs",
+      title: "Global Jobs Portal",
+      description: "Access a curated list of job opportunities from top tech companies worldwide. Our platform connects you with roles that match your skills and career aspirations.",
+      icon: <Briefcase size={24} />,
+      image: "/features/jobs.png",
+      highlights: ["Direct Referrals", "Company Insights", "Salary Benchmarking"]
     },
     {
-      icon: <Shield className="feature-icon" />,
-      title: "Secure & Reliable",
-      description: "Your data and progress are safe with our enterprise-grade security and cloud infrastructure."
+      id: "events",
+      title: "Immersive Tech Events",
+      description: "Stay ahead with our dynamic events calendar. Participate in high-stakes hackathons, competitive coding challenges, and insightful tech talks from industry leaders.",
+      icon: <Calendar size={24} />,
+      image: "/features/events.png",
+      highlights: ["Global Hackathons", "Live Leaderboards", "Expert Webinars"]
     },
     {
-      icon: <Zap className="feature-icon" />,
-      title: "AI-Powered Insights",
-      description: "Get personalized recommendations and performance analytics driven by advanced AI algorithms."
+      id: "resume",
+      title: "AI-Powered Resume Builder",
+      description: "Craft the perfect resume with our intelligent builder. Get real-time AI suggestions to optimize your content for Applicant Tracking Systems (ATS) and recruiters.",
+      icon: <FileText size={24} />,
+      image: "/features/resume.png",
+      highlights: ["ATS Optimization", "Smart Suggestions", "Premium Templates"]
     },
     {
-      icon: <BarChart className="feature-icon" />,
-      title: "Detailed Analytics",
-      description: "Visualize your growth with comprehensive charts and metrics that help you identify strengths and weaknesses."
+      id: "interview",
+      title: "AI Mock Interviews",
+      description: "Practice your interview skills with our sophisticated AI interviewer. Receive instant feedback on your technical accuracy, communication, and confidence.",
+      icon: <Bot size={24} />,
+      image: "/features/interview.png",
+      highlights: ["Behavioral Analysis", "Technical Drills", "Performance Metrics"]
     },
     {
-      icon: <Users className="feature-icon" />,
-      title: "Collaborative Learning",
-      description: "Connect with peers and mentors through integrated discussion forums and group projects."
+      id: "resources",
+      title: "Comprehensive Resource Library",
+      description: "Unlock a treasure trove of study materials. From system design to deep learning, our curated resources help you master any topic at your own pace.",
+      icon: <BookOpen size={24} />,
+      image: "/features/resources.png",
+      highlights: ["Curated Roadmaps", "Practice Sets", "Video Tutorials"]
     },
     {
-      icon: <BookOpen className="feature-icon" />,
-      title: "Rich Resource Library",
-      description: "Access a vast collection of study materials, courses, and practice tests curated by industry experts."
+      id: "alumni",
+      title: "Alumni Network & Mentorship",
+      description: "Connect with a global community of alumni from top-tier institutions. Gain valuable career advice and mentorship from those who have already succeeded.",
+      icon: <Users size={24} />,
+      image: "/features/alumni.png",
+      highlights: ["1:1 Mentorship", "Peer Networking", "Success Stories"]
     },
     {
-      icon: <MessageSquare className="feature-icon" />,
-      title: "24/7 Support",
-      description: "Get your doubts resolved anytime with our AI chatbot and dedicated support team."
+      id: "workshops",
+      title: "Skill Building Workshops",
+      description: "Join hands-on sessions led by industry experts. Master in-demand technologies and frameworks through practical, project-based learning.",
+      icon: <GraduationCap size={24} />,
+      image: "/features/workshops.png",
+      highlights: ["Live Coding", "Certification", "Industry Use-cases"]
     },
     {
-      icon: <Globe className="feature-icon" />,
-      title: "Access Anywhere",
-      description: "Learn on the go with our mobile-responsive platform. Your classroom is wherever you are."
+      id: "research",
+      title: "Research Work Opportunities",
+      description: "Contribute to cutting-edge research in AI and emerging technologies. Collaborate with mentors on high-impact papers and projects.",
+      icon: <Microscope size={24} />,
+      image: "/features/research.png",
+      highlights: ["Paper Publications", "Data Science Labs", "Expert Guidance"]
+    },
+    {
+      id: "projects",
+      title: "Real-World Project Collaboration",
+      description: "Work on production-grade projects in a collaborative environment. Experience the full software development lifecycle with modern tools.",
+      icon: <Code size={24} />,
+      image: "/features/projects.png",
+      highlights: ["Agile Workflow", "Code Reviews", "Portfolio Building"]
+    },
+    {
+      id: "leaderboard",
+      title: "Global Student Leaderboard",
+      description: "Compete with peers from around the world. Earn points, badges, and rankings as you learn and participate in platform activities.",
+      icon: <Award size={24} />,
+      image: "/features/leaderboard.png",
+      highlights: ["Skill Badges", "Monthly Rankings", "Exclusive Rewards"]
     }
   ];
 
@@ -50,24 +90,39 @@ const Features = () => {
     <div className="features-page">
       <section className="features-hero">
         <div className="container">
-          <h1 className="gradient-text">Powerful Features for Modern Learning</h1>
-          <p>Discover how GyanSutra LMS transforms the educational experience with cutting-edge technology.</p>
+          <h1 className="gradient-text">Unlock Your Potential with GyanSutra</h1>
+          <p>Explore the powerful tools and features designed to accelerate your learning and career growth.</p>
         </div>
       </section>
 
-      <section className="features-grid-section container">
-        <div className="features-grid">
-          {features.map((feature, index) => (
-            <div key={index} className="feature-card glass-panel animate-fade-in" style={{ animationDelay: `${index * 100}ms` }}>
-              <div className="feature-icon-wrapper">
-                {feature.icon}
+      <div className="feature-sections-container">
+        {featureList.map((feature, index) => (
+          <section key={feature.id} className={`feature-section ${index % 2 !== 0 ? 'reverse' : ''}`}>
+            <div className="container feature-grid">
+              <div className="feature-image-wrapper animate-fade-in">
+                <div className="image-overlay"></div>
+                <img src={feature.image} alt={feature.title} className="feature-image" />
               </div>
-              <h3>{feature.title}</h3>
-              <p>{feature.description}</p>
+              <div className="feature-content animate-fade-in-up">
+                <div className="feature-icon-badge">
+                  {feature.icon}
+                </div>
+                <h2 className="feature-title">{feature.title}</h2>
+                <p className="feature-description">{feature.description}</p>
+                <ul className="feature-highlights">
+                  {feature.highlights.map((highlight, hIndex) => (
+                    <li key={hIndex}>
+                      <CheckCircle size={18} className="check-icon" />
+                      <span>{highlight}</span>
+                    </li>
+                  ))}
+                </ul>
+                <button className="btn btn-primary mt-4">Learn More</button>
+              </div>
             </div>
-          ))}
-        </div>
-      </section>
+          </section>
+        ))}
+      </div>
     </div>
   );
 };

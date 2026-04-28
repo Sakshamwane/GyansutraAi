@@ -1,99 +1,192 @@
 .features-page {
-  padding-top: 80px;
-  min-height: 100vh;
   background: var(--bg-dark);
+  color: var(--text-primary);
+  overflow-x: hidden;
 }
 
 .features-hero {
+  padding: 120px 20px 60px;
   text-align: center;
-  padding: 100px 20px;
   background: radial-gradient(circle at center, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
 }
 
 .features-hero h1 {
-  font-size: 3.5rem;
-  margin-bottom: 1.5rem;
+  font-size: 4rem;
   font-weight: 800;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
 }
 
 .features-hero p {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   color: var(--text-secondary);
-  max-width: 700px;
+  max-width: 800px;
   margin: 0 auto;
+  line-height: 1.6;
 }
 
-.features-grid-section {
+.feature-sections-container {
   padding-bottom: 100px;
 }
 
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
+.feature-section {
+  padding: 100px 0;
+  position: relative;
 }
 
-.feature-card {
-  padding: 2.5rem;
-  border-radius: 24px;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+.feature-section:nth-child(even) {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+}
+
+.feature-section.reverse .feature-grid {
+  direction: ltr; /* Ensure text flows correctly */
+}
+
+.feature-section.reverse .feature-image-wrapper {
+  order: 2;
+}
+
+.feature-section.reverse .feature-content {
+  order: 1;
+}
+
+.feature-image-wrapper {
+  position: relative;
+  border-radius: 32px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
   border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.feature-image-wrapper:hover {
+  transform: scale(1.02) translateY(-10px);
+}
+
+.feature-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.feature-image-wrapper:hover .feature-image {
+  transform: scale(1.05);
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom right, rgba(99, 102, 241, 0.1), transparent);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.feature-content {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  text-align: left;
 }
 
-.feature-card:hover {
-  transform: translateY(-10px);
-  border-color: rgba(99, 102, 241, 0.3);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-}
-
-.feature-icon-wrapper {
-  width: 60px;
-  height: 60px;
+.feature-icon-badge {
+  width: 56px;
+  height: 56px;
+  background: var(--primary-gradient);
   border-radius: 16px;
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(168, 85, 247, 0.2));
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1.5rem;
-  color: var(--primary);
-  transition: all 0.3s ease;
-}
-
-.feature-card:hover .feature-icon-wrapper {
-  background: var(--primary-gradient);
+  margin-bottom: 2rem;
   color: white;
-  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
 }
 
-.feature-icon {
-  width: 28px;
-  height: 28px;
-}
-
-.feature-card h3 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
+.feature-title {
+  font-size: 2.75rem;
   font-weight: 700;
+  margin-bottom: 1.5rem;
   color: var(--text-primary);
+  line-height: 1.2;
 }
 
-.feature-card p {
+.feature-description {
+  font-size: 1.15rem;
   color: var(--text-secondary);
-  line-height: 1.6;
-  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.feature-highlights {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.feature-highlights li {
+  display: flex;
+  align-items: center;
+  font-size: 1.05rem;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.check-icon {
+  color: #10b981;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 1024px) {
+  .feature-grid {
+    gap: 3rem;
+  }
+  
+  .feature-title {
+    font-size: 2.25rem;
+  }
 }
 
 @media (max-width: 768px) {
   .features-hero h1 {
-    font-size: 2.5rem;
+    font-size: 3rem;
   }
   
-  .features-grid {
+  .feature-grid {
     grid-template-columns: 1fr;
+    gap: 3rem;
+    text-align: center;
+  }
+  
+  .feature-content {
+    align-items: center;
+    order: 2 !important;
+  }
+  
+  .feature-image-wrapper {
+    order: 1 !important;
+    border-radius: 24px;
+  }
+  
+  .feature-highlights {
+    text-align: left;
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .feature-icon-badge {
+    margin-bottom: 1.5rem;
   }
 }
