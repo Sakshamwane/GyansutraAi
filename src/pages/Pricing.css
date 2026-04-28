@@ -231,22 +231,21 @@
 
 /* FAQ */
 .pricing-faq-section {
-  padding: 100px 0;
+  padding: 40px 0;
   background-color: #ffffff;
   border-top: 1px solid #e2e8f0;
-  border-bottom: 1px solid #e2e8f0;
 }
 
 .faq-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 .faq-item {
   background: #f8fafc;
-  padding: 40px;
-  border-radius: 24px;
+  padding: 30px;
+  border-radius: 20px;
   border: 1px solid #e2e8f0;
   transition: all 0.3s ease;
 }
@@ -257,55 +256,55 @@
 }
 
 .faq-item h4 {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-weight: 800;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   color: #0f172a;
 }
 
 .faq-item p {
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: #64748b;
   margin: 0;
 }
 
 /* CTA */
 .pricing-bottom-cta {
-  padding: 100px 0;
+  padding: 40px 0 60px;
 }
 
 .cta-colored-box {
   background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
-  padding: 80px;
-  border-radius: 40px;
+  padding: 50px 60px;
+  border-radius: 32px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: white;
-  box-shadow: 0 30px 60px -12px rgba(79, 70, 229, 0.4);
+  box-shadow: 0 25px 50px -12px rgba(79, 70, 229, 0.3);
 }
 
 .cta-title {
-  font-size: 2.75rem;
+  font-size: 2.5rem;
   font-weight: 800;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   color: white;
   line-height: 1.1;
 }
 
 .cta-subtitle {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   color: rgba(255, 255, 255, 0.9);
-  max-width: 550px;
+  max-width: 500px;
 }
 
 .btn-white {
   background: #ffffff;
   color: #4f46e5;
-  padding: 20px 40px;
-  border-radius: 16px;
+  padding: 16px 32px;
+  border-radius: 12px;
   font-weight: 800;
-  font-size: 1.1rem;
+  font-size: 1rem;
   border: none;
   cursor: pointer;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -314,7 +313,7 @@
 .btn-white:hover {
   background: #ffffff;
   transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.2);
 }
 
 @media (max-width: 992px) {
