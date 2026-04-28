@@ -1,141 +1,199 @@
 .pricing-page {
-  padding-top: 80px;
-  min-height: 100vh;
   background: var(--bg-dark);
+  color: var(--text-primary);
+  min-height: 100vh;
 }
 
 .pricing-hero {
+  padding: 120px 20px 60px;
   text-align: center;
-  padding: 100px 20px;
-  background: radial-gradient(circle at center, rgba(168, 85, 247, 0.1) 0%, transparent 70%);
+  background: radial-gradient(circle at top, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
 }
 
 .pricing-hero h1 {
   font-size: 3.5rem;
-  margin-bottom: 1.5rem;
   font-weight: 800;
+  margin-bottom: 1.5rem;
 }
 
 .pricing-hero p {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   color: var(--text-secondary);
-  max-width: 600px;
+  max-width: 800px;
   margin: 0 auto;
 }
 
-.pricing-grid-section {
+.pricing-content {
   padding-bottom: 100px;
 }
 
-.pricing-grid {
+.institutional-layout {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2.5rem;
-  margin-top: 3rem;
-  align-items: stretch;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 3rem;
+  align-items: start;
 }
 
-.pricing-card {
-  padding: 3rem 2.5rem;
+.institutional-card {
+  padding: 3rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 32px;
   position: relative;
-  display: flex;
-  flex-direction: column;
-  transition: all 0.4s ease;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  overflow: hidden;
 }
 
-.pricing-card:hover {
-  transform: translateY(-10px);
-  border-color: rgba(99, 102, 241, 0.4);
-}
-
-.pricing-card.highlight {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(99, 102, 241, 0.5);
-  box-shadow: 0 20px 50px rgba(99, 102, 241, 0.15);
-}
-
-.popular-badge {
-  position: absolute;
-  top: -15px;
-  left: 50%;
-  transform: translateX(-50%);
+.plan-badge {
   background: var(--primary-gradient);
   color: white;
   padding: 6px 16px;
   border-radius: 20px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
-}
-
-.plan-header {
-  margin-bottom: 2.5rem;
-  text-align: center;
-}
-
-.plan-header h3 {
-  font-size: 1.75rem;
-  margin-bottom: 1.5rem;
+  font-size: 0.75rem;
   font-weight: 700;
+  display: inline-block;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
-.plan-price {
-  margin-bottom: 1.5rem;
-  display: flex;
-  align-items: baseline;
-  justify-content: center;
+.institutional-card h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
 }
 
-.plan-price .currency {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-right: 2px;
+.plan-price-custom {
+  margin-bottom: 2.5rem;
 }
 
-.plan-price .amount {
-  font-size: 3.5rem;
+.plan-price-custom .amount {
+  font-size: 2rem;
   font-weight: 800;
-  line-height: 1;
+  color: var(--primary);
+  display: block;
 }
 
-.plan-price .period {
-  font-size: 1rem;
+.plan-price-custom p {
   color: var(--text-secondary);
-  margin-left: 4px;
+  font-size: 1rem;
 }
 
-.plan-header p {
+.feature-list-institutional {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.feature-item-box {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.25rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.feature-item-box:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(99, 102, 241, 0.3);
+  transform: translateX(10px);
+}
+
+.feature-icon-wrapper {
+  width: 40px;
+  height: 40px;
+  background: rgba(99, 102, 241, 0.1);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+}
+
+.plan-footer-info {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 1.5rem;
   color: var(--text-secondary);
   font-size: 0.95rem;
-  line-height: 1.5;
+  font-style: italic;
 }
 
-.plan-features {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 3rem 0;
-  flex-grow: 1;
+/* Form Styles */
+.trial-form-container {
+  padding: 3rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 32px;
 }
 
-.plan-features li {
+.trial-form-container h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.trial-form-container > p {
+  color: var(--text-secondary);
+  margin-bottom: 2.5rem;
+}
+
+.trial-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.form-group {
   display: flex;
-  align-items: flex-start;
-  margin-bottom: 1.25rem;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 0.85rem 1.25rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: white;
   font-size: 1rem;
-  color: var(--text-primary);
+  transition: all 0.3s ease;
 }
 
-.check-icon {
-  color: #10b981;
-  margin-right: 12px;
-  margin-top: 3px;
-  flex-shrink: 0;
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
 }
 
-.btn-block {
-  width: 100%;
+.form-group select option {
+  background: var(--bg-dark);
+  color: white;
+}
+
+@media (max-width: 1024px) {
+  .institutional-layout {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 768px) {
@@ -143,7 +201,11 @@
     font-size: 2.5rem;
   }
   
-  .pricing-grid {
+  .institutional-card, .trial-form-container {
+    padding: 2rem;
+  }
+  
+  .form-row {
     grid-template-columns: 1fr;
   }
 }
