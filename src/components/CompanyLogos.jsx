@@ -2,27 +2,27 @@ import React from 'react';
 import './CompanyLogos.css';
 
 const companies = [
-  { name: "Samsung", logo: "https://logo.clearbit.com/samsung.com" },
-  { name: "HCL Tech", logo: "https://logo.clearbit.com/hcltech.com" },
-  { name: "Infosys", logo: "https://logo.clearbit.com/infosys.com" },
-  { name: "Nxtwave", logo: "https://logo.clearbit.com/nxtwave.tech" },
-  { name: "Sopra Steria", logo: "https://logo.clearbit.com/soprasteria.com" },
-  { name: "Success Numbers", logo: "https://logo.clearbit.com/successnumbers.in" },
-  { name: "Visa", logo: "https://logo.clearbit.com/visa.com" },
-  { name: "HDFC", logo: "https://logo.clearbit.com/hdfcbank.com" },
-  { name: "Amazon", logo: "https://logo.clearbit.com/amazon.in" },
-  { name: "Mediatek", logo: "https://logo.clearbit.com/mediatek.com" },
-  { name: "Warner Bros Discovery", logo: "https://logo.clearbit.com/wbd.com" },
-  { name: "Netapp", logo: "https://logo.clearbit.com/netapp.com" },
-  { name: "Intel", logo: "https://logo.clearbit.com/intel.com" },
-  { name: "Dell", logo: "https://logo.clearbit.com/dell.com" },
-  { name: "Rapidfort", logo: "https://logo.clearbit.com/rapidfort.com" },
-  { name: "Google", logo: "https://logo.clearbit.com/google.com" },
-  { name: "Flipkart", logo: "https://logo.clearbit.com/flipkart.com" },
-  { name: "AMD", logo: "https://logo.clearbit.com/amd.com" },
-  { name: "Omnissa", logo: "https://logo.clearbit.com/omnissa.com" },
-  { name: "Alstom", logo: "https://logo.clearbit.com/alstom.com" },
-  { name: "Walmart", logo: "https://logo.clearbit.com/walmart.com" },
+  { name: "Samsung", domain: "samsung.com" },
+  { name: "HCL Tech", domain: "hcltech.com" },
+  { name: "Infosys", domain: "infosys.com" },
+  { name: "Nxtwave", domain: "nxtwave.tech" },
+  { name: "Sopra Steria", domain: "soprasteria.com" },
+  { name: "Success Numbers", domain: "successnumbers.in" },
+  { name: "Visa", domain: "visa.com" },
+  { name: "HDFC", domain: "hdfcbank.com" },
+  { name: "Amazon", domain: "amazon.in" },
+  { name: "Mediatek", domain: "mediatek.com" },
+  { name: "Warner Bros Discovery", domain: "wbd.com" },
+  { name: "Netapp", domain: "netapp.com" },
+  { name: "Intel", domain: "intel.com" },
+  { name: "Dell", domain: "dell.com" },
+  { name: "Rapidfort", domain: "rapidfort.com" },
+  { name: "Google", domain: "google.com" },
+  { name: "Flipkart", domain: "flipkart.com" },
+  { name: "AMD", domain: "amd.com" },
+  { name: "Omnissa", domain: "omnissa.com" },
+  { name: "Alstom", domain: "alstom.com" },
+  { name: "Walmart", domain: "walmart.com" },
 ];
 
 const CompanyLogos = () => {
@@ -38,18 +38,23 @@ const CompanyLogos = () => {
           <div className="logos-track">
             {[...companies, ...companies].map((company, index) => (
               <div className="logo-item" key={index}>
-                <img 
-                  src={company.logo} 
-                  alt={company.name} 
-                  className="company-logo-img"
-                  onError={(e) => {
-                    e.target.style.display = 'none';
-                    e.target.nextSibling.style.display = 'block';
-                  }}
-                />
-                <span className="company-name-fallback" style={{ display: 'none' }}>
-                  {company.name}
-                </span>
+                <div className="logo-wrapper">
+                  <img 
+                    src={`https://logo.clearbit.com/${company.domain}`} 
+                    alt={company.name} 
+                    className="company-logo-img"
+                    onError={(e) => {
+                      e.target.src = `https://www.google.com/s2/favicons?domain=${company.domain}&sz=128`;
+                      e.target.onerror = (ev) => {
+                        ev.target.style.display = 'none';
+                        ev.target.nextSibling.style.display = 'flex';
+                      };
+                    }}
+                  />
+                  <div className="logo-fallback" style={{ display: 'none' }}>
+                    {company.name.charAt(0)}
+                  </div>
+                </div>
                 <span className="company-name-label">{company.name}</span>
               </div>
             ))}
