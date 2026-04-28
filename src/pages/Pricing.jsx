@@ -134,21 +134,6 @@ const Pricing = () => {
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="pricing-faq-section container">
-        <div className="text-center mb-12">
-          <h2 className="section-heading">Frequently Asked Questions</h2>
-        </div>
-        <div className="faq-grid">
-          {faqs.map((faq, index) => (
-            <div className="faq-item" key={index}>
-              <h4>{faq.q}</h4>
-              <p>{faq.a}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* Final CTA */}
       <section className="pricing-bottom-cta container">
         <div className="cta-colored-box">
