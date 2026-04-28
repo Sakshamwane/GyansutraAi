@@ -141,7 +141,15 @@ const Pricing = () => {
             <h2 className="cta-title">Ready to modernize your campus?</h2>
             <p className="cta-subtitle">Join forward-thinking institutions using GyanSutra to bridge the gap between education and industry.</p>
           </div>
-          <button className="btn-white">Contact Sales Team</button>
+          <a 
+            href="https://wa.me/918543832619?text=When%20can%20we%20connect?" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="btn-white"
+            style={{ textDecoration: 'none', display: 'inline-block' }}
+          >
+            Contact Sales Team
+          </a>
         </div>
       </section>
     </div>
