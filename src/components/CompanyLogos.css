@@ -1,0 +1,108 @@
+.company-logos-section {
+  padding: 80px 0;
+  background: var(--bg-dark);
+  overflow: hidden;
+}
+
+.section-subtitle {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.logos-marquee {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 40px 0;
+  mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+}
+
+.logos-track {
+  display: flex;
+  width: max-content;
+  animation: logo-scroll 50s linear infinite;
+  gap: 4rem;
+  align-items: center;
+}
+
+.logos-marquee:hover .logos-track {
+  animation-play-state: paused;
+}
+
+@keyframes logo-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-50% - 2rem));
+  }
+}
+
+.logo-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem 2rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  min-width: 180px;
+}
+
+.logo-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(99, 102, 241, 0.3);
+  transform: translateY(-5px);
+}
+
+.logo-item img {
+  height: 35px;
+  width: auto;
+  filter: grayscale(1) brightness(1.5);
+  transition: all 0.3s ease;
+  opacity: 0.7;
+}
+
+.logo-item:hover img {
+  filter: grayscale(0) brightness(1);
+  opacity: 1;
+}
+
+.company-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.logo-item:hover .company-name {
+  color: var(--text-primary);
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .logos-track {
+    gap: 2rem;
+    animation-duration: 30s;
+  }
+  
+  .logo-item {
+    min-width: 150px;
+    padding: 0.75rem 1.5rem;
+  }
+}
