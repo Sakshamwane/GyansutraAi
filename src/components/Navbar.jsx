@@ -19,11 +19,11 @@ const Navbar = () => {
         <div className={`navbar-links-container ${isOpen ? 'active' : ''}`}>
           <ul className="navbar-links">
             <li><Link to="/" onClick={() => setIsOpen(false)}>Home</Link></li>
-            <li><Link to="/internships" onClick={() => setIsOpen(false)}>Internships</Link></li>
+            <li><Link to="/features" onClick={() => setIsOpen(false)}>Features</Link></li>
+            <li><Link to="/pricing" onClick={() => setIsOpen(false)}>Pricing</Link></li>
             <li><Link to="/contributors" onClick={() => setIsOpen(false)}>Contributors</Link></li>
             <li><Link to="/contact" onClick={() => setIsOpen(false)}>Contact Us</Link></li>
-            <li><a href="https://lms.gyansutra.com/" target="_blank" rel="noopener noreferrer" onClick={() => setIsOpen(false)}>LMS</a></li>
-
+            <li><a href="https://lms.gyansutra.com/student-login" target="_blank" rel="noopener noreferrer" onClick={() => setIsOpen(false)}>LMS</a></li>
           </ul>
         </div>
 

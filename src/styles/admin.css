@@ -76,6 +76,18 @@
   margin-bottom: 3rem;
 }
 
+.admin-logo-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-subtitle {
+  font-size: 0.9rem;
+  color: var(--admin-text-muted);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
 .admin-tabs {
   display: flex;
   gap: 1rem;

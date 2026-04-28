@@ -29,9 +29,12 @@ const AdminDashboard = () => {
   return (
     <div className="admin-dashboard">
       <header className="admin-header">
-        <h1 className="gradient-text font-bold">Admin Panel</h1>
+        <div className="admin-logo-section">
+          <h1 className="gradient-text font-bold">GyanSutra LMS</h1>
+          <span className="admin-subtitle">Product Management Portal</span>
+        </div>
         <div className="admin-actions">
-          <span className="admin-user-badge">Logged in as Admin</span>
+          <span className="admin-user-badge">Administrator Access</span>
           <button onClick={handleLogout} className="btn btn-secondary" style={{ marginLeft: '1rem' }}>Logout</button>
         </div>
       </header>
@@ -41,19 +44,19 @@ const AdminDashboard = () => {
           className={`tab-btn ${activeTab === "institutes" ? "active" : ""}`}
           onClick={() => setActiveTab("institutes")}
         >
-          Institutes
+          Partner Institutions
         </button>
         <button 
           className={`tab-btn ${activeTab === "contributors" ? "active" : ""}`}
           onClick={() => setActiveTab("contributors")}
         >
-          Contributors
+          LMS Contributors
         </button>
         <button 
           className={`tab-btn ${activeTab === "internships" ? "active" : ""}`}
           onClick={() => setActiveTab("internships")}
         >
-          Internships
+          Programs & Internships
         </button>
       </div>
 

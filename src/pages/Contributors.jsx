@@ -7,8 +7,8 @@ const Contributors = () => {
   return (
     <div className="contributors-page">
       <Hero 
-        title="Our Mission Drivers"
-        subtitle="Meet the amazing individuals and mentors who make our vision a reality."
+        title="LMS Experts & Contributors"
+        subtitle="Meet the industry leaders and mentors powering the GyanSutra learning ecosystem."
         badgeText="Community"
         badgeIcon={Users}
         showStats={false}
