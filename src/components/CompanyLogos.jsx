@@ -7,10 +7,10 @@ const companies = [
   { name: "Infosys", logo: "https://logo.clearbit.com/infosys.com" },
   { name: "Nxtwave", logo: "https://logo.clearbit.com/nxtwave.tech" },
   { name: "Sopra Steria", logo: "https://logo.clearbit.com/soprasteria.com" },
-  { name: "Success Numbers", logo: "" }, // Placeholder or stylized text
+  { name: "Success Numbers", logo: "https://logo.clearbit.com/successnumbers.in" },
   { name: "Visa", logo: "https://logo.clearbit.com/visa.com" },
   { name: "HDFC", logo: "https://logo.clearbit.com/hdfcbank.com" },
-  { name: "Amazon", logo: "https://logo.clearbit.com/amazon.com" },
+  { name: "Amazon", logo: "https://logo.clearbit.com/amazon.in" },
   { name: "Mediatek", logo: "https://logo.clearbit.com/mediatek.com" },
   { name: "Warner Bros Discovery", logo: "https://logo.clearbit.com/wbd.com" },
   { name: "Netapp", logo: "https://logo.clearbit.com/netapp.com" },
@@ -38,19 +38,19 @@ const CompanyLogos = () => {
           <div className="logos-track">
             {[...companies, ...companies].map((company, index) => (
               <div className="logo-item" key={index}>
-                {company.logo ? (
-                  <img 
-                    src={company.logo} 
-                    alt={company.name} 
-                    onError={(e) => {
-                      e.target.style.display = 'none';
-                      e.target.nextSibling.style.display = 'block';
-                    }}
-                  />
-                ) : null}
-                <span className="company-name" style={{ display: company.logo ? 'none' : 'block' }}>
+                <img 
+                  src={company.logo} 
+                  alt={company.name} 
+                  className="company-logo-img"
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                    e.target.nextSibling.style.display = 'block';
+                  }}
+                />
+                <span className="company-name-fallback" style={{ display: 'none' }}>
                   {company.name}
                 </span>
+                <span className="company-name-label">{company.name}</span>
               </div>
             ))}
           </div>
