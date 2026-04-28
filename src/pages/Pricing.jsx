@@ -162,12 +162,14 @@ const Pricing = () => {
 
       {/* Final CTA */}
       <section className="pricing-bottom-cta container">
-        <div className="cta-box-gradient glass-panel">
-          <div className="cta-text">
-            <h2>Ready to modernize your campus?</h2>
-            <p>Join forward-thinking institutions using GyanSutra to bridge the gap between education and industry.</p>
+        <div className="cta-colored-box">
+          <div className="cta-content-wrapper">
+            <h2 className="cta-title">Ready to modernize your campus?</h2>
+            <p className="cta-subtitle">Join forward-thinking institutions using GyanSutra to bridge the gap between education and industry.</p>
           </div>
-          <button className="btn btn-white">Contact Sales Team</button>
+          <div className="cta-button-wrapper">
+            <button className="btn btn-white btn-lg">Contact Sales Team</button>
+          </div>
         </div>
       </section>
     </div>
