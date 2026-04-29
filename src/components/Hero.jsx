@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Hero.css';
 import { Sparkles, ArrowRight, CheckCircle } from 'lucide-react';
 
@@ -10,7 +11,9 @@ const Hero = ({
   showStats = true,
   showCta = true,
   ctaText = "Get Started",
+  ctaLink = "/lms",
   secondaryCtaText = "Explore Features",
+  secondaryCtaLink = "/pricing",
   minHeight = "100vh"
 }) => {
   return (
@@ -39,10 +42,12 @@ const Hero = ({
         
         {showCta && (
           <div className="hero-cta delay-300">
-            <button className="btn btn-primary btn-lg">
+            <Link to={ctaLink} className="btn btn-primary btn-lg">
               {ctaText} <ArrowRight size={18} className="ml-2" />
-            </button>
-            <button className="btn btn-secondary btn-lg">{secondaryCtaText}</button>
+            </Link>
+            <Link to={secondaryCtaLink} className="btn btn-secondary btn-lg">
+              {secondaryCtaText}
+            </Link>
           </div>
         )}
         

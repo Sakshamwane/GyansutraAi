@@ -20,7 +20,9 @@ const Home = () => {
         }
         subtitle="A comprehensive AI-driven platform for students, mentors, and institutions to excel in the digital age."
         ctaText="Try for Free"
+        ctaLink="/lms"
         secondaryCtaText="See Pricing"
+        secondaryCtaLink="/pricing"
       />
 
       <Offerings />
