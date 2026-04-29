@@ -2,11 +2,6 @@ import React from 'react';
 import Hero from '../components/Hero';
 
 import Partners from '../components/Partners';
-import Mentors from '../components/Mentors';
-import CompanyLogos from '../components/CompanyLogos';
-import Testimonials from '../components/Testimonials';
-import Offerings from '../components/Offerings';
-
 const Home = () => {
   return (
     <main>
@@ -27,9 +22,6 @@ const Home = () => {
 
       <Offerings />
       <Partners />
-      <Mentors />
-      <CompanyLogos />
-      <Testimonials />
     </main>
   );
 };
