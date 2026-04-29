@@ -101,14 +101,18 @@
 .feature-icon-badge {
   width: 56px;
   height: 56px;
-  background: var(--primary-gradient);
   border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 2rem;
-  color: white;
-  box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.feature-section:hover .feature-icon-badge {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
 }
 
 .feature-title {
