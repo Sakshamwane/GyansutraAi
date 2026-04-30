@@ -9,14 +9,17 @@ const Contributors = () => {
   return (
     <div className="contributors-page">
       <Hero 
-        title="LMS Experts & Contributors"
+        title={
+          <>
+            LMS Experts & <span className="gradient-text">Contributors</span>
+          </>
+        }
         subtitle="Meet the industry leaders and mentors powering the GyanSutra learning ecosystem."
         showStats={false}
         showCta={false}
-        minHeight="auto"
       />
-      <div style={{ paddingBottom: '2rem' }}>
-        <Mentors />
+      <div style={{ marginTop: '-4rem' }}>
+        <Mentors hideTitle={true} />
       </div>
       <CompanyLogos />
       <div style={{ paddingTop: '4rem', paddingBottom: '4rem' }}>

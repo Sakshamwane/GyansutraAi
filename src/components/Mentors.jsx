@@ -3,7 +3,7 @@ import axios from 'axios';
 import './Mentors.css';
 import { Star, Building } from 'lucide-react';
 
-const Mentors = () => {
+const Mentors = ({ hideTitle = false }) => {
   const [contributors, setContributors] = useState([]);
 
   useEffect(() => {
@@ -21,10 +21,12 @@ const Mentors = () => {
   return (
     <section className="section mentors-section" id="mentors">
       <div className="container">
-        <div className="text-center animate-fade-in-up">
-          <h2 className="title">Our Contributors</h2>
-          <p className="subtitle">Showcasing all the people who have contributed to our mission in some way or the other</p>
-        </div>
+        {!hideTitle && (
+          <div className="text-center animate-fade-in-up">
+            <h2 className="title">Our Contributors</h2>
+            <p className="subtitle">Showcasing all the people who have contributed to our mission in some way or the other</p>
+          </div>
+        )}
         
         <div className="mentors-track-container mt-8">
           <div className="mentors-track">
