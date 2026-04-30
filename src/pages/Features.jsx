@@ -134,7 +134,7 @@ const Features = () => {
                     </li>
                   ))}
                 </ul>
-                <button className="btn btn-primary mt-4">Learn More</button>
+
               </div>
             </div>
           </section>
