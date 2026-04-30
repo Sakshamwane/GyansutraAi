@@ -90,14 +90,18 @@
   .footer-grid {
     grid-template-columns: 1fr;
     gap: 3rem;
-    text-align: center;
+    text-align: left;
   }
   
   .footer-desc {
-    margin: 0 auto 2rem;
+    margin: 0 0 2rem;
   }
   
   .social-links {
-    justify-content: center;
+    justify-content: flex-start;
+  }
+
+  .footer-bottom {
+    text-align: left;
   }
 }
