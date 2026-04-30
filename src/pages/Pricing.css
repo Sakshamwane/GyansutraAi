@@ -270,8 +270,8 @@
 
 /* CTA */
 .pricing-bottom-cta {
-  padding: 40px 0;
-  margin-bottom: 80px; /* Added significant bottom margin */
+  padding: 80px 0;
+  margin-bottom: 120px;
 }
 
 .cta-colored-box {
