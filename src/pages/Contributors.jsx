@@ -17,8 +17,9 @@ const Contributors = () => {
         subtitle="Meet the industry leaders and mentors powering the GyanSutra learning ecosystem."
         showStats={false}
         showCta={false}
+        minHeight="60vh"
       />
-      <div style={{ marginTop: '-4rem' }}>
+      <div style={{ marginTop: '-8rem', position: 'relative', zIndex: 20 }}>
         <Mentors hideTitle={true} />
       </div>
       <CompanyLogos />
