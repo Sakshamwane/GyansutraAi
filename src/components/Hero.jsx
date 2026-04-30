@@ -42,12 +42,25 @@ const Hero = ({
         
         {showCta && (
           <div className="hero-cta delay-300">
-            <Link to={ctaLink} className="btn btn-primary btn-lg">
-              {ctaText} <ArrowRight size={18} className="ml-2" />
-            </Link>
-            <Link to={secondaryCtaLink} className="btn btn-secondary btn-lg">
-              {secondaryCtaText}
-            </Link>
+            {ctaLink.startsWith('http') ? (
+              <a href={ctaLink} target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-lg">
+                {ctaText} <ArrowRight size={18} className="ml-2" />
+              </a>
+            ) : (
+              <Link to={ctaLink} className="btn btn-primary btn-lg">
+                {ctaText} <ArrowRight size={18} className="ml-2" />
+              </Link>
+            )}
+
+            {secondaryCtaLink.startsWith('http') ? (
+              <a href={secondaryCtaLink} target="_blank" rel="noopener noreferrer" className="btn btn-secondary btn-lg">
+                {secondaryCtaText}
+              </a>
+            ) : (
+              <Link to={secondaryCtaLink} className="btn btn-secondary btn-lg">
+                {secondaryCtaText}
+              </Link>
+            )}
           </div>
         )}
         
