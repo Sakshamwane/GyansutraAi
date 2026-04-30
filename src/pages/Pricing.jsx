@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Send, Building2, Users, ShieldCheck, Zap, Globe, BarChart3, Shield } from 'lucide-react';
+import axios from 'axios';
+import { Send, Building2, Users, ShieldCheck, Zap, Globe, BarChart3, Shield, Loader2 } from 'lucide-react';
 import './Pricing.css';
 
 const Pricing = () => {
@@ -11,11 +12,36 @@ const Pricing = () => {
     studentCount: '',
     message: ''
   });
+  const [loading, setLoading] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert("Thank you for your interest! Our team will contact you shortly to set up your free trial.");
-    setFormData({ name: '', institution: '', email: '', phone: '', studentCount: '', message: '' });
+    setLoading(true);
+    
+    try {
+      const API_BASE = import.meta.env.VITE_API_URL || (import.meta.env.PROD ? '' : 'http://localhost:8000');
+      
+      // Map studentCount to student_count for backend
+      const payload = {
+        name: formData.name,
+        email: formData.email,
+        institution: formData.institution,
+        phone: formData.phone,
+        student_count: formData.studentCount,
+        message: formData.message
+      };
+
+      await axios.post(`${API_BASE}/api/training/request-demo/`, payload);
+      
+      setSubmitted(true);
+      setFormData({ name: '', institution: '', email: '', phone: '', studentCount: '', message: '' });
+    } catch (err) {
+      console.error("Error submitting demo request:", err);
+      alert("Something went wrong. Please try again or contact us on WhatsApp.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleChange = (e) => {
@@ -107,42 +133,57 @@ const Pricing = () => {
                 <p>Set up your 14-day free trial today.</p>
               </div>
               
-              <form onSubmit={handleSubmit} className="premium-form">
-                <div className="form-field">
-                  <label>Full Name</label>
-                  <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Dr. Sarah Smith" required />
-                </div>
-                
-                <div className="form-field">
-                  <label>Institutional Email</label>
-                  <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="sarah@university.edu" required />
-                </div>
-                
-                <div className="form-field">
-                  <label>Institution Name</label>
-                  <input type="text" name="institution" value={formData.institution} onChange={handleChange} placeholder="GyanSutra University" required />
-                </div>
-
-                <div className="form-row">
-                  <div className="form-field">
-                    <label>Phone Number</label>
-                    <input type="tel" name="phone" value={formData.phone} onChange={handleChange} placeholder="+91..." required />
+              {submitted ? (
+                <div className="form-success-message text-center p-8">
+                  <div className="success-icon mb-4" style={{ color: '#10b981' }}>
+                    <ShieldCheck size={64} className="mx-auto" />
                   </div>
-                  <div className="form-field">
-                    <label>Student Volume</label>
-                    <select name="studentCount" value={formData.studentCount} onChange={handleChange} required>
-                      <option value="">Select Capacity</option>
-                      <option value="<500">Less than 500</option>
-                      <option value="500-2000">500 - 2,000</option>
-                      <option value="2000+">2,000+</option>
-                    </select>
-                  </div>
+                  <h3 className="text-2xl font-bold mb-2">Request Received!</h3>
+                  <p className="text-gray-600">Thank you for your interest. Our institutional team will contact you at <strong>{formData.email}</strong> within 24 hours.</p>
+                  <button onClick={() => setSubmitted(false)} className="btn btn-secondary mt-6">Send Another Request</button>
                 </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="premium-form">
+                  <div className="form-field">
+                    <label>Full Name</label>
+                    <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Dr. Sarah Smith" required disabled={loading} />
+                  </div>
+                  
+                  <div className="form-field">
+                    <label>Institutional Email</label>
+                    <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="sarah@university.edu" required disabled={loading} />
+                  </div>
+                  
+                  <div className="form-field">
+                    <label>Institution Name</label>
+                    <input type="text" name="institution" value={formData.institution} onChange={handleChange} placeholder="GyanSutra University" required disabled={loading} />
+                  </div>
 
-                <button type="submit" className="btn btn-primary btn-block mt-4">
-                  Request Free Trial <Send size={18} className="ml-2" />
-                </button>
-              </form>
+                  <div className="form-row">
+                    <div className="form-field">
+                      <label>Phone Number</label>
+                      <input type="tel" name="phone" value={formData.phone} onChange={handleChange} placeholder="+91..." required disabled={loading} />
+                    </div>
+                    <div className="form-field">
+                      <label>Student Volume</label>
+                      <select name="studentCount" value={formData.studentCount} onChange={handleChange} required disabled={loading}>
+                        <option value="">Select Capacity</option>
+                        <option value="<500">Less than 500</option>
+                        <option value="500-2000">500 - 2,000</option>
+                        <option value="2000+">2,000+</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <button type="submit" className="btn btn-primary btn-block mt-4" disabled={loading}>
+                    {loading ? (
+                      <><Loader2 size={18} className="animate-spin mr-2" /> Submitting...</>
+                    ) : (
+                      <><Send size={18} className="ml-2" /> Request Free Trial</>
+                    )}
+                  </button>
+                </form>
+              )}
               
               <div className="form-security-badge">
                 <ShieldCheck size={14} className="mr-1" /> Data secured by enterprise-grade encryption

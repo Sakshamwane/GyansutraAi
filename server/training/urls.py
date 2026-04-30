@@ -4,6 +4,8 @@ from . import views
 urlpatterns = [
     path('register/', views.register, name='register'),
     path('verify-payment/', views.verify_payment, name='verify_payment'),
+    path('request-demo/', views.request_demo, name='request_demo'),
+    path('admin/demo-requests/', views.demo_request_list, name='demo_request_list'),
     # Admin Institute endpoints
     path('admin/institutes/', views.institute_list, name='institute_list'),
     path('admin/institutes/<int:pk>/', views.institute_detail, name='institute_detail'),

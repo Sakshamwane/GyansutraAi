@@ -5,8 +5,8 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework.response import Response
 from django.conf import settings
 import base64
-from .models import Registration, Institute, Contributor, Internship
-from .serializers import InstituteSerializer, ContributorSerializer, InternshipSerializer
+from .models import Registration, Institute, Contributor, Internship, DemoRequest
+from .serializers import InstituteSerializer, ContributorSerializer, InternshipSerializer, DemoRequestSerializer
 
 @csrf_exempt
 def check_admin_auth(request):
@@ -218,3 +218,21 @@ def internship_detail(request, pk):
         return Response(ser.errors, status=400)
     obj.delete()
     return Response(status=204)
+
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def request_demo(request):
+    serializer = DemoRequestSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response({'message': 'Demo request submitted successfully'}, status=201)
+    return Response(serializer.errors, status=400)
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def demo_request_list(request):
+    if not check_admin_auth(request):
+        return Response({'detail': 'Unauthorized'}, status=401)
+    qs = DemoRequest.objects.all().order_by('-created_at')
+    ser = DemoRequestSerializer(qs, many=True)
+    return Response(ser.data)
