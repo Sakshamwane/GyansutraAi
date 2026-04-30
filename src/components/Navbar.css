@@ -99,21 +99,20 @@
 .lms-login-btn {
   display: inline-flex;
   align-items: center;
-  padding: 0.5rem 1rem;
+  padding: 0.6rem 1.2rem;
   border-radius: var(--radius-md);
-  background: rgba(59, 130, 246, 0.1);
-  color: var(--accent-blue);
+  background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+  color: white;
   font-weight: 600;
   font-size: 0.875rem;
   transition: all 0.2s ease;
-  border: 1px solid rgba(59, 130, 246, 0.2);
+  box-shadow: var(--shadow-sm);
 }
 
 .lms-login-btn:hover {
-  background: var(--accent-blue);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md), var(--shadow-glow);
   color: white;
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-glow);
 }
 
 .desktop-only {
