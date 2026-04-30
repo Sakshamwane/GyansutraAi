@@ -268,10 +268,10 @@
   margin: 0;
 }
 
-/* CTA */
-.pricing-bottom-cta {
-  padding: 60px 0;
-  margin-bottom: 0;
+/* Top CTA */
+.pricing-top-cta {
+  padding: 40px 0;
+  margin-bottom: 40px;
 }
 
 .cta-colored-box {
