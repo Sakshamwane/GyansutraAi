@@ -8,6 +8,24 @@
 
 .contact-header {
   margin-bottom: 4rem;
+  padding: 60px 0;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+  background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.05) 0%, transparent 80%);
+}
+
+.contact-header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -20%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.05) 0%, transparent 70%);
+  filter: blur(60px);
+  z-index: -1;
+  animation: float 12s ease-in-out infinite alternate;
 }
 
 .contact-grid {

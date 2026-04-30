@@ -5,9 +5,26 @@
 }
 
 .features-hero {
-  padding: 120px 20px 60px;
+  padding: 160px 20px 80px;
   text-align: center;
-  background: radial-gradient(circle at center, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.1) 0%, transparent 40%),
+              radial-gradient(circle at 90% 80%, rgba(20, 184, 166, 0.08) 0%, transparent 40%),
+              #fcfcfc;
+}
+
+.features-hero::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, transparent 70%);
+  filter: blur(80px);
+  z-index: 0;
+  animation: float 15s ease-in-out infinite alternate;
 }
 
 .features-hero h1 {
