@@ -13,19 +13,8 @@ const Navbar = () => {
   return (
     <nav className="navbar glass-panel">
       <div className="container navbar-container">
-        <div className="navbar-left-group">
-          <a 
-            href="https://lms.gyansutra.com/student-login" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className="lms-login-btn desktop-only"
-          >
-            <GraduationCap size={16} className="mr-2" /> Login to LMS
-          </a>
-
-          <div className="navbar-logo">
-            <Link to="/" className="gradient-text font-bold">GyanSutra AI</Link>
-          </div>
+        <div className="navbar-logo">
+          <Link to="/" className="gradient-text font-bold">GyanSutra AI</Link>
         </div>
 
         <div className={`navbar-links-container ${isOpen ? 'active' : ''}`}>
@@ -71,7 +60,14 @@ const Navbar = () => {
         </div>
 
         <div className="navbar-actions">
-
+          <a 
+            href="https://lms.gyansutra.com/student-login" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="lms-login-btn desktop-only"
+          >
+            <GraduationCap size={16} className="mr-2" /> Login to LMS
+          </a>
 
           <button className={`mobile-menu-toggle ${isOpen ? 'active' : ''}`} onClick={toggleMenu} aria-label="Toggle menu">
             <span className="bar"></span>
