@@ -14,6 +14,12 @@
   align-items: center;
 }
 
+.navbar-left-group {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
 .navbar-logo {
   font-size: 1.5rem;
   font-weight: 800;
@@ -96,6 +102,30 @@
   display: none;
 }
 
+.lms-login-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-md);
+  background: rgba(59, 130, 246, 0.1);
+  color: var(--accent-blue);
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.lms-login-btn:hover {
+  background: var(--accent-blue);
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-glow);
+}
+
+.desktop-only {
+  display: inline-flex;
+}
+
 @media (max-width: 768px) {
   .desktop-only {
     display: none;
@@ -120,6 +150,8 @@
     transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     z-index: 1000;
     padding-top: 5rem;
+    display: flex;
+    flex-direction: column;
   }
 
   .navbar-links-container.active {
@@ -136,5 +168,18 @@
   .navbar-links a {
     font-size: 1.125rem;
     width: 100%;
+  }
+
+  .lms-mobile-footer {
+    padding: 2rem 2.5rem;
+    margin-top: auto;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  .lms-mobile-footer .btn {
+    padding: 1rem;
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
   }
 }

@@ -8,7 +8,6 @@ const Home = () => {
   return (
     <main>
       <Hero 
-        badgeText="Next-Gen Learning Management System"
         title={
           <>
             Empower Your Future with <br className="hidden-mobile" />

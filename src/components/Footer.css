@@ -2,7 +2,7 @@
   background-color: #0f172a !important;
   color: white !important;
   padding: 80px 0 60px !important;
-  margin-top: 150px !important;
+  margin-top: 180px !important;
   position: relative !important;
   display: block !important;
   border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
@@ -84,6 +84,7 @@
 @media (max-width: 768px) {
   .footer {
     padding: 3rem 0 2rem;
+    margin-top: 100px !important;
   }
   
   .footer-grid {

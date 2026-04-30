@@ -43,7 +43,6 @@ const Pricing = () => {
       {/* Hero Section */}
       <section className="pricing-hero">
         <div className="container">
-          <span className="badge-outline">Enterprise LMS</span>
           <h1 className="hero-title">Scalable Solutions for <span className="gradient-text">Modern Institutions</span></h1>
           <p className="hero-subtitle">Empower your students with an AI-driven learning ecosystem designed for excellence.</p>
         </div>

@@ -11,8 +11,6 @@ const Contributors = () => {
       <Hero 
         title="LMS Experts & Contributors"
         subtitle="Meet the industry leaders and mentors powering the GyanSutra learning ecosystem."
-        badgeText="Community"
-        badgeIcon={Users}
         showStats={false}
         showCta={false}
         minHeight="auto"

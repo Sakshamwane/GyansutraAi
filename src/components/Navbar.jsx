@@ -13,8 +13,19 @@ const Navbar = () => {
   return (
     <nav className="navbar glass-panel">
       <div className="container navbar-container">
-        <div className="navbar-logo">
-          <Link to="/" className="gradient-text font-bold">GyanSutra AI</Link>
+        <div className="navbar-left-group">
+          <a 
+            href="https://lms.gyansutra.com/student-login" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="lms-login-btn desktop-only"
+          >
+            <GraduationCap size={16} className="mr-2" /> Login to LMS
+          </a>
+
+          <div className="navbar-logo">
+            <Link to="/" className="gradient-text font-bold">GyanSutra AI</Link>
+          </div>
         </div>
 
         <div className={`navbar-links-container ${isOpen ? 'active' : ''}`}>
@@ -40,16 +51,23 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <a href="https://lms.gyansutra.com/student-login" target="_blank" rel="noopener noreferrer" onClick={() => setIsOpen(false)}>
-                <GraduationCap size={18} className="nav-icon" /> LMS
-              </a>
-            </li>
-            <li>
               <Link to="/contact" onClick={() => setIsOpen(false)}>
                 <MessageCircle size={18} className="nav-icon" /> Contact Us
               </Link>
             </li>
           </ul>
+          
+          <div className="mobile-only lms-mobile-footer">
+            <a 
+              href="https://lms.gyansutra.com/student-login" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="btn btn-primary w-full"
+              onClick={() => setIsOpen(false)}
+            >
+              <GraduationCap size={18} className="mr-2" /> Login to LMS
+            </a>
+          </div>
         </div>
 
         <div className="navbar-actions">

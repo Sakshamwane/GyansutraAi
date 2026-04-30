@@ -30,8 +30,6 @@ const Contact = () => {
         <Hero 
           title={<span className="gradient-text">Get in Touch</span>}
           subtitle="We'd love to hear from you. Reach out to us for any queries or just to say hi!"
-          badgeText="Contact Us"
-          badgeIcon={Mail}
           showStats={false}
           showCta={false}
           minHeight="auto"

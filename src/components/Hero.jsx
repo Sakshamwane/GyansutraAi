@@ -6,7 +6,7 @@ import { Sparkles, ArrowRight, CheckCircle } from 'lucide-react';
 const Hero = ({ 
   title, 
   subtitle, 
-  badgeText = "AI-Powered Placement Acceleration", 
+  badgeText = null, 
   badgeIcon: BadgeIcon = Sparkles,
   showStats = true,
   showCta = true,
