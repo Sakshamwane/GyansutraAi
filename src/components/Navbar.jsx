@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Home, Zap, Users, CreditCard, GraduationCap, MessageCircle } from 'lucide-react';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -18,12 +19,36 @@ const Navbar = () => {
 
         <div className={`navbar-links-container ${isOpen ? 'active' : ''}`}>
           <ul className="navbar-links">
-            <li><Link to="/" onClick={() => setIsOpen(false)}>Home</Link></li>
-            <li><Link to="/features" onClick={() => setIsOpen(false)}>Features</Link></li>
-            <li><Link to="/contributors" onClick={() => setIsOpen(false)}>Contributors</Link></li>
-            <li><Link to="/pricing" onClick={() => setIsOpen(false)}>Pricing</Link></li>
-            <li><a href="https://lms.gyansutra.com/student-login" target="_blank" rel="noopener noreferrer" onClick={() => setIsOpen(false)}>LMS</a></li>
-            <li><Link to="/contact" onClick={() => setIsOpen(false)}>Contact Us</Link></li>
+            <li>
+              <Link to="/" onClick={() => setIsOpen(false)}>
+                <Home size={18} className="nav-icon" /> Home
+              </Link>
+            </li>
+            <li>
+              <Link to="/features" onClick={() => setIsOpen(false)}>
+                <Zap size={18} className="nav-icon" /> Features
+              </Link>
+            </li>
+            <li>
+              <Link to="/contributors" onClick={() => setIsOpen(false)}>
+                <Users size={18} className="nav-icon" /> Contributors
+              </Link>
+            </li>
+            <li>
+              <Link to="/pricing" onClick={() => setIsOpen(false)}>
+                <CreditCard size={18} className="nav-icon" /> Pricing
+              </Link>
+            </li>
+            <li>
+              <a href="https://lms.gyansutra.com/student-login" target="_blank" rel="noopener noreferrer" onClick={() => setIsOpen(false)}>
+                <GraduationCap size={18} className="nav-icon" /> LMS
+              </a>
+            </li>
+            <li>
+              <Link to="/contact" onClick={() => setIsOpen(false)}>
+                <MessageCircle size={18} className="nav-icon" /> Contact Us
+              </Link>
+            </li>
           </ul>
         </div>
 

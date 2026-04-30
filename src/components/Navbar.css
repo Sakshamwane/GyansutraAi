@@ -33,11 +33,25 @@
 .navbar-links a {
   font-weight: 500;
   color: var(--text-secondary);
-  transition: color 0.2s ease;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .navbar-links a:hover {
   color: var(--accent-blue);
+  transform: translateY(-1px);
+}
+
+.nav-icon {
+  opacity: 0.8;
+  transition: transform 0.2s ease;
+}
+
+.navbar-links a:hover .nav-icon {
+  opacity: 1;
+  transform: scale(1.1);
 }
 
 .navbar-actions {
