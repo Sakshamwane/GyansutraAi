@@ -31,6 +31,8 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  text-align: justify;
+  text-justify: auto;
 }
 
 a {
