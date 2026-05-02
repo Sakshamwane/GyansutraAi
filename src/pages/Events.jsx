@@ -91,7 +91,7 @@ const Events = () => {
                             value={selectedMode}
                             onChange={(e) => setSelectedMode(e.target.value)}
                         >
-                            <option value="">All Modes</option>
+                            <option value="">All Categories</option>
                             {categories.map(cat => (
                                 <option key={cat} value={cat}>{cat}</option>
                             ))}
@@ -145,7 +145,7 @@ const Events = () => {
                                 <span className="info-value">{selectedEvent.time}</span>
                             </div>
                             <div className="info-item">
-                                <span className="info-label">Mode</span>
+                                <span className="info-label">Category</span>
                                 <span className="info-value">{selectedEvent.category}</span>
                             </div>
                         </div>
