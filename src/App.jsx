@@ -9,6 +9,7 @@ import Internships from './pages/Internships';
 import Success from './pages/Success';
 import Contact from './pages/Contact';
 import Contributors from './pages/Contributors';
+import Events from './pages/Events';
 import AdminLogin from './pages/admin/login';
 import AdminDashboard from './pages/admin/dashboard';
 
@@ -25,6 +26,7 @@ function App() {
           <Route path="/success" element={<Success />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/contributors" element={<Contributors />} />
+          <Route path="/events" element={<Events />} />
           <Route path="/admin" element={<AdminLogin />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
         </Routes>

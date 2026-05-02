@@ -63,3 +63,15 @@ class DemoRequest(models.Model):
 
     def __str__(self):
         return f"{self.name} - {self.institution}"
+
+class Event(models.Model):
+    title = models.CharField(max_length=255)
+    description = models.TextField()
+    date = models.DateField()
+    time = models.CharField(max_length=100) # Flexible time format
+    link = models.URLField()
+    category = models.CharField(max_length=100) # This is the "mode"
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title

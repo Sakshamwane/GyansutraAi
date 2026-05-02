@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import InstituteAdmin from "../../components/admin/InstituteAdmin";
 import ContributorAdmin from "../../components/admin/ContributorAdmin";
 import InternshipAdmin from "../../components/admin/InternshipAdmin";
+import EventAdmin from "../../components/admin/EventAdmin";
 import "../../styles/admin.css";
 
 const AdminDashboard = () => {
@@ -58,12 +59,19 @@ const AdminDashboard = () => {
         >
           Programs & Internships
         </button>
+        <button 
+          className={`tab-btn ${activeTab === "events" ? "active" : ""}`}
+          onClick={() => setActiveTab("events")}
+        >
+          Events
+        </button>
       </div>
 
       <div className="admin-content-card">
         {activeTab === "institutes" && <InstituteAdmin />}
         {activeTab === "contributors" && <ContributorAdmin />}
         {activeTab === "internships" && <InternshipAdmin />}
+        {activeTab === "events" && <EventAdmin />}
       </div>
     </div>
   );
