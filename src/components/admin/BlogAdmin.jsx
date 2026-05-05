@@ -25,8 +25,7 @@ const BlogAdmin = () => {
 
   const fetchBlogs = async () => {
     try {
-      const API_BASE = import.meta.env.VITE_API_URL || (import.meta.env.PROD ? '' : 'http://localhost:8000');
-      const res = await axios.get(`${API_BASE}/api/training/blogs/`);
+      const res = await axios.get("/api/training/blogs/");
       setBlogs(res.data);
       setLoading(false);
     } catch (err) {
@@ -50,15 +49,14 @@ const BlogAdmin = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const token = localStorage.getItem("adminToken");
-    const API_BASE = import.meta.env.VITE_API_URL || (import.meta.env.PROD ? '' : 'http://localhost:8000');
     
     try {
       if (editingBlog) {
-        await axios.put(`${API_BASE}/api/training/blogs/${editingBlog.id}/`, formData, {
+        await axios.put(`/api/training/blogs/${editingBlog.id}/`, formData, {
           headers: { "X-GyanSutra-Admin-Token": token }
         });
       } else {
-        await axios.post(`${API_BASE}/api/training/blogs/`, formData, {
+        await axios.post("/api/training/blogs/", formData, {
           headers: { "X-GyanSutra-Admin-Token": token }
         });
       }
@@ -67,7 +65,21 @@ const BlogAdmin = () => {
       resetForm();
       fetchBlogs();
     } catch (err) {
-      alert("Error saving blog: " + (err.response?.data?.detail || "Check all fields"));
+      console.error("Save error:", err.response?.data);
+      let errorMsg = "Error saving blog: ";
+      const backendErrors = err.response?.data;
+      
+      if (backendErrors && typeof backendErrors === 'object') {
+        // Handle DRF validation errors which are often { field: [errors] }
+        const details = Object.entries(backendErrors)
+          .map(([field, msgs]) => `${field}: ${Array.isArray(msgs) ? msgs.join(', ') : msgs}`)
+          .join('\n');
+        errorMsg += details || err.response?.data?.detail || "Check all fields";
+      } else {
+        errorMsg += "Check all fields and try again.";
+      }
+      
+      alert(errorMsg);
     }
   };
 
@@ -100,10 +112,9 @@ const BlogAdmin = () => {
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this post?")) return;
     const token = localStorage.getItem("adminToken");
-    const API_BASE = import.meta.env.VITE_API_URL || (import.meta.env.PROD ? '' : 'http://localhost:8000');
     
     try {
-      await axios.delete(`${API_BASE}/api/training/blogs/${id}/`, {
+      await axios.delete(`/api/training/blogs/${id}/`, {
         headers: { "X-GyanSutra-Admin-Token": token }
       });
       fetchBlogs();

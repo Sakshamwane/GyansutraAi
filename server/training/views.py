@@ -5,8 +5,8 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework.response import Response
 from django.conf import settings
 import base64
-from .models import Registration, Institute, Contributor, Internship, DemoRequest, Event, BlogPost
-from .serializers import InstituteSerializer, ContributorSerializer, InternshipSerializer, DemoRequestSerializer, EventSerializer, BlogPostSerializer
+from .models import Registration, Institute, Contributor, Internship, DemoRequest, Event, BlogPost, Ambassador
+from .serializers import InstituteSerializer, ContributorSerializer, InternshipSerializer, DemoRequestSerializer, EventSerializer, BlogPostSerializer, AmbassadorSerializer
 
 @csrf_exempt
 def check_admin_auth(request):
@@ -319,3 +319,21 @@ def blog_detail(request, pk):
     # DELETE
     obj.delete()
     return Response(status=204)
+
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def ambassador_register(request):
+    ser = AmbassadorSerializer(data=request.data)
+    if ser.is_valid():
+        ser.save()
+        return Response(ser.data, status=201)
+    return Response(ser.errors, status=400)
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def ambassador_list(request):
+    if not check_admin_auth(request):
+        return Response({'detail': 'Unauthorized'}, status=401)
+    qs = Ambassador.objects.all().order_by('-created_at')
+    ser = AmbassadorSerializer(qs, many=True)
+    return Response(ser.data)

@@ -13,8 +13,7 @@ const BlogPost = () => {
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const API_BASE = import.meta.env.VITE_API_URL || (import.meta.env.PROD ? '' : 'http://localhost:8000');
-        const res = await axios.get(`${API_BASE}/api/training/blogs/${slug}/`);
+        const res = await axios.get(`/api/training/blogs/${slug}/`);
         setPost(res.data);
       } catch (err) {
         console.error("Error fetching post:", err);

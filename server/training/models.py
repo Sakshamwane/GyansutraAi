@@ -89,3 +89,16 @@ class BlogPost(models.Model):
 
     def __str__(self):
         return self.title
+
+class Ambassador(models.Model):
+    name = models.CharField(max_length=255)
+    email = models.EmailField(unique=True)
+    phone = models.CharField(max_length=20)
+    college = models.CharField(max_length=255)
+    year = models.CharField(max_length=50)
+    linkedin_url = models.URLField(blank=True, null=True)
+    reason = models.TextField() # Why they want to join
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.name} - {self.college}"

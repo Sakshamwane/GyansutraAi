@@ -11,6 +11,7 @@ import Contributors from './pages/Contributors';
 import Events from './pages/Events';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
+import JoinUs from './pages/JoinUs';
 import AdminLogin from './pages/admin/login';
 import AdminDashboard from './pages/admin/dashboard';
 
@@ -29,6 +30,7 @@ function App() {
           <Route path="/events" element={<Events />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
+          <Route path="/join-us" element={<JoinUs />} />
           <Route path="/admin" element={<AdminLogin />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
         </Routes>

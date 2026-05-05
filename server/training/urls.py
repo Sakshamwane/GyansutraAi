@@ -21,4 +21,7 @@ urlpatterns = [
     # Blog endpoints
     path('blogs/', views.blog_list, name='blog_list'),
     path('blogs/<str:pk>/', views.blog_detail, name='blog_detail'),
+    # Ambassador endpoints
+    path('ambassador/register/', views.ambassador_register, name='ambassador_register'),
+    path('admin/ambassadors/', views.ambassador_list, name='ambassador_list'),
 ]

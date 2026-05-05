@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Home, Zap, Users, GraduationCap, MessageCircle, Calendar, BookOpen } from 'lucide-react';
+import { Home, Zap, Users, GraduationCap, MessageCircle, Calendar, BookOpen, Heart } from 'lucide-react';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -42,6 +42,11 @@ const Navbar = () => {
             <li>
               <Link to="/blog" onClick={() => setIsOpen(false)}>
                 <BookOpen size={18} className="nav-icon" /> Blog
+              </Link>
+            </li>
+            <li>
+              <Link to="/join-us" onClick={() => setIsOpen(false)}>
+                <Heart size={18} className="nav-icon" /> Join Us
               </Link>
             </li>
             <li>
