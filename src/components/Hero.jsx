@@ -13,7 +13,7 @@ const Hero = ({
   ctaText = "Get Started",
   ctaLink = "/lms",
   secondaryCtaText = "Explore Features",
-  secondaryCtaLink = "/pricing",
+  secondaryCtaLink = "/features",
   minHeight = "100vh"
 }) => {
   return (

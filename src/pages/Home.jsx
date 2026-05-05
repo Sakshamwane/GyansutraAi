@@ -17,8 +17,8 @@ const Home = () => {
         subtitle="A comprehensive AI-driven platform for students, mentors, and institutions to excel in the digital age."
         ctaText="Try for Free"
         ctaLink="https://lms.gyansutra.com/student-login"
-        secondaryCtaText="See Pricing"
-        secondaryCtaLink="/pricing"
+        secondaryCtaText="Learn More"
+        secondaryCtaLink="/features"
       />
 
       <Offerings />
