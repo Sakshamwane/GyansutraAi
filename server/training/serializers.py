@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Institute, Contributor, Internship, DemoRequest, Event
+from .models import Institute, Contributor, Internship, DemoRequest, Event, BlogPost
 
 class InstituteSerializer(serializers.ModelSerializer):
     class Meta:
@@ -24,4 +24,9 @@ class DemoRequestSerializer(serializers.ModelSerializer):
 class EventSerializer(serializers.ModelSerializer):
     class Meta:
         model = Event
+        fields = '__all__'
+
+class BlogPostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = BlogPost
         fields = '__all__'

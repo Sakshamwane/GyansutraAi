@@ -4,6 +4,7 @@ import InstituteAdmin from "../../components/admin/InstituteAdmin";
 import ContributorAdmin from "../../components/admin/ContributorAdmin";
 import InternshipAdmin from "../../components/admin/InternshipAdmin";
 import EventAdmin from "../../components/admin/EventAdmin";
+import BlogAdmin from "../../components/admin/BlogAdmin";
 import "../../styles/admin.css";
 
 const AdminDashboard = () => {
@@ -65,6 +66,12 @@ const AdminDashboard = () => {
         >
           Events
         </button>
+        <button 
+          className={`tab-btn ${activeTab === "blogs" ? "active" : ""}`}
+          onClick={() => setActiveTab("blogs")}
+        >
+          Blog Posts
+        </button>
       </div>
 
       <div className="admin-content-card">
@@ -72,6 +79,7 @@ const AdminDashboard = () => {
         {activeTab === "contributors" && <ContributorAdmin />}
         {activeTab === "internships" && <InternshipAdmin />}
         {activeTab === "events" && <EventAdmin />}
+        {activeTab === "blogs" && <BlogAdmin />}
       </div>
     </div>
   );

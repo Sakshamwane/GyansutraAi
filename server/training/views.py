@@ -5,8 +5,8 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework.response import Response
 from django.conf import settings
 import base64
-from .models import Registration, Institute, Contributor, Internship, DemoRequest, Event
-from .serializers import InstituteSerializer, ContributorSerializer, InternshipSerializer, DemoRequestSerializer, EventSerializer
+from .models import Registration, Institute, Contributor, Internship, DemoRequest, Event, BlogPost
+from .serializers import InstituteSerializer, ContributorSerializer, InternshipSerializer, DemoRequestSerializer, EventSerializer, BlogPostSerializer
 
 @csrf_exempt
 def check_admin_auth(request):
@@ -267,6 +267,51 @@ def event_detail(request, pk):
         return Response(ser.data)
     if request.method == 'PUT':
         ser = EventSerializer(obj, data=request.data, partial=True)
+        if ser.is_valid():
+            ser.save()
+            return Response(ser.data)
+        return Response(ser.errors, status=400)
+    # DELETE
+    obj.delete()
+    return Response(status=204)
+
+@api_view(['GET', 'POST'])
+@permission_classes([AllowAny])
+def blog_list(request):
+    if request.method == 'POST' and not check_admin_auth(request):
+        return Response({'detail': 'Unauthorized'}, status=401)
+    if request.method == 'GET':
+        qs = BlogPost.objects.all().order_by('-created_at')
+        ser = BlogPostSerializer(qs, many=True)
+        return Response(ser.data)
+    # POST - create
+    ser = BlogPostSerializer(data=request.data)
+    if ser.is_valid():
+        ser.save()
+        return Response(ser.data, status=201)
+    return Response(ser.errors, status=400)
+
+@api_view(['GET', 'PUT', 'DELETE'])
+@permission_classes([AllowAny])
+def blog_detail(request, pk):
+    # Handle slug or ID
+    try:
+        if str(pk).isdigit():
+            obj = BlogPost.objects.get(pk=pk)
+        else:
+            obj = BlogPost.objects.get(slug=pk)
+    except BlogPost.DoesNotExist:
+        return Response({'detail': 'Not found'}, status=404)
+
+    if request.method == 'GET':
+        ser = BlogPostSerializer(obj)
+        return Response(ser.data)
+    
+    if not check_admin_auth(request):
+        return Response({'detail': 'Unauthorized'}, status=401)
+
+    if request.method == 'PUT':
+        ser = BlogPostSerializer(obj, data=request.data, partial=True)
         if ser.is_valid():
             ser.save()
             return Response(ser.data)

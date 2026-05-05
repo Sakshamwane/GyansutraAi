@@ -75,3 +75,17 @@ class Event(models.Model):
 
     def __str__(self):
         return self.title
+
+class BlogPost(models.Model):
+    title = models.CharField(max_length=255)
+    slug = models.SlugField(unique=True)
+    author = models.CharField(max_length=255, default="GyanSutra Team")
+    content = models.TextField() # Markdown or HTML
+    excerpt = models.TextField(blank=True, null=True)
+    image_url = models.URLField(max_length=500, blank=True, null=True)
+    category = models.CharField(max_length=100, default="General")
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title
