@@ -65,29 +65,30 @@ const BlogPost = () => {
               {post.author ? post.author.charAt(0) : 'G'}
             </div>
             <div className="text-left">
-              <div className="font-semibold">{post.author || "GyanSutra Team"}</div>
-              <div className="text-slate-400 text-sm">Industry Expert</div>
+              <div className="font-semibold text-slate-900">{post.author || "GyanSutra Team"}</div>
+              <div className="text-slate-500 text-sm">Industry Expert</div>
             </div>
           </div>
         </header>
 
-        <img 
-          src={post.image_url || "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1200&q=80"} 
-          alt={post.title} 
-          className="post-featured-image animate-fade-in delay-200" 
-        />
+        <div className="post-featured-image animate-fade-in delay-200">
+          <img 
+            src={post.image_url || "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1200&q=80"} 
+            alt={post.title} 
+          />
+        </div>
 
-        <div className="post-body animate-fade-in-up delay-300">
+        <div className="post-body-content animate-fade-in-up delay-300">
            <div dangerouslySetInnerHTML={{ __html: post.content }} />
         </div>
 
-        <footer className="post-footer-section mt-20 pb-20 border-t border-slate-800 pt-10">
+        <footer className="post-footer-section mt-20 pb-20 border-t border-slate-200 pt-10">
           <div className="flex justify-between items-center">
             <div className="share-buttons flex items-center gap-4">
-              <span className="text-slate-400 font-medium">Share this story:</span>
-              <button className="p-2 rounded-full bg-slate-800 hover:bg-slate-700 transition-colors"><Share2 size={20} /></button>
+              <span className="text-slate-500 font-medium">Share this story:</span>
+              <button className="p-2 rounded-full bg-slate-100 hover:bg-slate-200 transition-colors text-slate-600"><Share2 size={20} /></button>
             </div>
-            <Link to="/blog" className="text-blue-500 font-semibold hover:underline">More Insights <ArrowLeft className="rotate-180 inline" size={16} /></Link>
+            <Link to="/blog" className="text-blue-600 font-semibold hover:underline">More Insights <ArrowRight className="inline" size={16} /></Link>
           </div>
         </footer>
       </div>
