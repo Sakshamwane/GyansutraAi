@@ -1,8 +1,7 @@
 .join-us-page {
   padding-top: 100px;
-  background-color: #030712;
+  background-color: var(--bg-primary);
   min-height: 100vh;
-  color: #f8fafc;
 }
 
 .join-hero {
@@ -10,17 +9,7 @@
   text-align: center;
   position: relative;
   overflow: hidden;
-}
-
-.join-hero::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -20%;
-  width: 140%;
-  height: 140%;
-  background: radial-gradient(circle at center, rgba(59, 130, 246, 0.1) 0%, transparent 60%);
-  z-index: 0;
+  background: radial-gradient(circle at top, rgba(59, 130, 246, 0.03), transparent 70%);
 }
 
 .join-hero h1 {
@@ -28,11 +17,12 @@
   margin-bottom: 1.5rem;
   font-weight: 800;
   letter-spacing: -0.02em;
+  color: var(--text-primary);
 }
 
 .join-hero p {
   font-size: 1.25rem;
-  color: #94a3b8;
+  color: var(--text-secondary);
   max-width: 700px;
   margin: 0 auto;
 }
@@ -48,26 +38,27 @@
 }
 
 .benefit-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--bg-secondary);
+  border: 1px solid rgba(0, 0, 0, 0.05);
   border-radius: 24px;
   padding: 2.5rem;
   text-align: center;
   transition: all 0.3s ease;
+  box-shadow: var(--shadow-md);
 }
 
 .benefit-card:hover {
   transform: translateY(-10px);
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(59, 130, 246, 0.3);
+  box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.08);
+  border-color: var(--accent-blue);
 }
 
 .benefit-icon {
-  width: 60px;
-  height: 60px;
+  width: 64px;
+  height: 64px;
   background: rgba(59, 130, 246, 0.1);
-  color: #3b82f6;
-  border-radius: 16px;
+  color: var(--accent-blue);
+  border-radius: 18px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -77,16 +68,20 @@
 .benefit-card h3 {
   font-size: 1.5rem;
   margin-bottom: 1rem;
+  color: var(--text-primary);
+  font-weight: 700;
 }
 
 .benefit-card p {
-  color: #94a3b8;
+  color: var(--text-secondary);
   line-height: 1.6;
 }
 
 .rewards-showcase {
   padding: 100px 0;
-  background: rgba(59, 130, 246, 0.02);
+  background: #f8fafc;
+  border-top: 1px solid rgba(0, 0, 0, 0.03);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.03);
 }
 
 .reward-grid {
@@ -96,61 +91,66 @@
 }
 
 .reward-item {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 20px;
-  padding: 1.5rem;
+  background: var(--bg-secondary);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 24px;
+  padding: 2rem;
   text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
 }
 
-.reward-item img {
-  width: 80px;
-  height: 80px;
-  object-fit: contain;
-  margin-bottom: 1rem;
+.reward-item:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-md);
 }
 
 .reward-item span {
   display: block;
-  font-weight: 600;
-  color: #fff;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-top: 1rem;
 }
 
 .registration-section {
-  padding: 100px 0;
+  padding: 120px 0;
+  background: var(--bg-primary);
 }
 
 .registration-container {
-  max-width: 800px;
+  max-width: 850px;
   margin: 0 auto;
 }
 
 .join-form {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 32px;
-  padding: 4rem;
-  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.3);
+  background: var(--bg-secondary);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 40px;
+  padding: 4.5rem;
+  box-shadow: 0 50px 100px -20px rgba(0, 0, 0, 0.12);
 }
 
 .form-header {
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 3.5rem;
 }
 
 .form-header h2 {
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
+  font-size: 2.75rem;
+  margin-bottom: 0.75rem;
+  font-weight: 800;
+  color: var(--text-primary);
 }
 
 .form-header p {
-  color: #94a3b8;
+  color: var(--text-secondary);
+  font-size: 1.1rem;
 }
 
 .form-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
 .form-group.full {
@@ -159,8 +159,9 @@
 
 .form-group label {
   display: block;
-  margin-bottom: 0.5rem;
-  color: #cbd5e1;
+  margin-bottom: 0.75rem;
+  color: var(--text-primary);
+  font-weight: 600;
   font-size: 0.9rem;
 }
 
@@ -168,34 +169,43 @@
 .form-group select, 
 .form-group textarea {
   width: 100%;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 0.85rem 1rem;
-  border-radius: 12px;
-  color: #fff;
+  background: #f8fafc;
+  border: 1.5px solid #e2e8f0;
+  padding: 1rem 1.25rem;
+  border-radius: 16px;
+  color: var(--text-primary);
   font-family: inherit;
-  transition: all 0.3s;
+  font-size: 1rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .form-group input:focus, 
 .form-group select:focus, 
 .form-group textarea:focus {
   outline: none;
-  border-color: #3b82f6;
-  background: rgba(59, 130, 246, 0.05);
+  border-color: var(--accent-blue);
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+}
+
+.form-group input::placeholder, 
+.form-group textarea::placeholder {
+  color: #94a3b8;
 }
 
 @media (max-width: 768px) {
   .join-hero h1 {
-    font-size: 2.5rem;
+    font-size: 2.75rem;
   }
   
   .join-form {
-    padding: 2rem;
+    padding: 2.5rem 1.5rem;
+    border-radius: 30px;
   }
   
   .form-grid {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
   
   .form-group.full {

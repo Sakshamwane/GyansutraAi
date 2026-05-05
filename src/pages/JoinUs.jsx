@@ -52,12 +52,12 @@ const JoinUs = () => {
       <div className="join-us-page flex items-center justify-center text-center">
         <div className="container py-40 animate-fade-in">
           <div className="success-icon mb-6 flex justify-center">
-             <div className="p-6 bg-green-500/20 rounded-full text-green-500">
+             <div className="p-6 bg-green-500/10 rounded-full text-green-600">
                <CheckCircle size={80} />
              </div>
           </div>
-          <h1 className="text-5xl font-bold mb-6">Welcome to the Tribe!</h1>
-          <p className="text-xl text-slate-400 max-width-600 mx-auto mb-10">
+          <h1 className="text-5xl font-bold mb-6 text-slate-900">Welcome to the Tribe!</h1>
+          <p className="text-xl text-slate-600 max-width-600 mx-auto mb-10">
             Your application to become a GyanSutra Campus Ambassador has been received. Our team will review your profile and get back to you within 48 hours.
           </p>
           <button onClick={() => window.location.href = '/'} className="btn btn-primary btn-lg">Back to Home</button>
@@ -80,8 +80,8 @@ const JoinUs = () => {
       <section className="benefits-section">
         <div className="container">
           <div className="section-header text-center mb-20 animate-fade-in-up">
-            <h2 className="text-4xl font-bold mb-4">Why Become an Ambassador?</h2>
-            <p className="text-slate-400">Unlock opportunities that go beyond the classroom</p>
+            <h2 className="text-4xl font-bold mb-4 text-slate-900">Why Become an Ambassador?</h2>
+            <p className="text-slate-600">Unlock opportunities that go beyond the classroom</p>
           </div>
 
           <div className="benefits-grid">
@@ -112,25 +112,25 @@ const JoinUs = () => {
       <section className="rewards-showcase">
         <div className="container">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-2">Rewards Gallery</h2>
-            <p className="text-slate-400">What's waiting for you</p>
+            <h2 className="text-3xl font-bold mb-2 text-slate-900">Rewards Gallery</h2>
+            <p className="text-slate-600">What's waiting for you</p>
           </div>
           <div className="reward-grid">
             <div className="reward-item">
-              <Shirt size={40} className="mx-auto mb-4 text-blue-400" />
-              <span>GyanSutra T-Shirt</span>
+              <Shirt size={40} className="mx-auto mb-4 text-blue-600" />
+              <span className="text-slate-900">GyanSutra T-Shirt</span>
             </div>
             <div className="reward-item">
-              <Coffee size={40} className="mx-auto mb-4 text-orange-400" />
-              <span>Premium Coffee Mug</span>
+              <Coffee size={40} className="mx-auto mb-4 text-orange-600" />
+              <span className="text-slate-900">Premium Coffee Mug</span>
             </div>
             <div className="reward-item">
-              <Smartphone size={40} className="mx-auto mb-4 text-purple-400" />
-              <span>iPad / Tech Gear</span>
+              <Smartphone size={40} className="mx-auto mb-4 text-purple-600" />
+              <span className="text-slate-900">iPad / Tech Gear</span>
             </div>
             <div className="reward-item">
-              <Award size={40} className="mx-auto mb-4 text-yellow-400" />
-              <span>Elite Badges</span>
+              <Award size={40} className="mx-auto mb-4 text-yellow-600" />
+              <span className="text-slate-900">Elite Badges</span>
             </div>
           </div>
         </div>

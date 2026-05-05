@@ -37,9 +37,9 @@ const Blog = () => {
     <div className="blog-page">
       <section className="blog-hero">
         <div className="container">
-          <h1 className="gradient-text animate-fade-in-up">Insights & Innovation</h1>
-          <p className="animate-fade-in-up delay-100">
-            Deep dives into tech, career strategies, and the future of AI-driven education.
+          <h1 className="gradient-text animate-fade-in-up">Knowledge Hub</h1>
+          <p className="animate-fade-in-up delay-100 text-slate-600">
+            Insights, tutorials, and success stories from the GyanSutra community.
           </p>
         </div>
       </section>
@@ -62,7 +62,7 @@ const Blog = () => {
         {loading ? (
           <div className="text-center py-20">
             <div className="loading-spinner"></div>
-            <p className="mt-4 text-slate-400">Curating the best content for you...</p>
+            <p className="mt-4 text-slate-500">Curating the best content for you...</p>
           </div>
         ) : filteredPosts.length > 0 ? (
           <div className="blog-grid animate-fade-in-up delay-300">
@@ -104,7 +104,7 @@ const Blog = () => {
         ) : (
           <div className="text-center py-20 animate-fade-in">
             <h3 className="text-2xl font-semibold mb-4">No stories found</h3>
-            <p className="text-slate-400">Try adjusting your filters or search term.</p>
+            <p className="text-slate-500">Try adjusting your filters or search term.</p>
           </div>
         )}
       </div>

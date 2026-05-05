@@ -43,13 +43,13 @@ const BlogPost = () => {
     <article className="post-page">
       <div className="container">
         <div className="post-nav mb-12">
-          <Link to="/blog" className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors">
+          <Link to="/blog" className="flex items-center gap-2 text-slate-500 hover:text-slate-900 transition-colors">
             <ArrowLeft size={20} /> Back to Insights
           </Link>
         </div>
 
         <header className="post-header animate-fade-in-up">
-          <div className="post-meta-top">
+          <div className="post-meta text-slate-500 mb-6 flex items-center gap-4">
             <span className="post-category-badge">{post.category}</span>
             <span className="flex items-center gap-2">
               <Calendar size={16} /> 
@@ -59,7 +59,7 @@ const BlogPost = () => {
               <Clock size={16} /> 5 min read
             </span>
           </div>
-          <h1 className="post-title">{post.title}</h1>
+          <h1 className="post-title text-slate-900">{post.title}</h1>
           <div className="post-author-large mt-8 flex items-center justify-center gap-4">
             <div className="author-img-large w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center font-bold text-lg">
               {post.author ? post.author.charAt(0) : 'G'}
