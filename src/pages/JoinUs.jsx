@@ -28,7 +28,19 @@ const JoinUs = () => {
       setSubmitted(true);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch (err) {
-      alert("Registration failed: " + (err.response?.data?.email || "Check your details and try again."));
+      console.error("Registration error:", err.response?.data);
+      let errorMsg = "Registration failed: ";
+      const backendErrors = err.response?.data;
+      
+      if (backendErrors && typeof backendErrors === 'object') {
+        const details = Object.entries(backendErrors)
+          .map(([field, msgs]) => `${field}: ${Array.isArray(msgs) ? msgs.join(', ') : msgs}`)
+          .join('\n');
+        errorMsg += details || "Check your details and try again.";
+      } else {
+        errorMsg += "Check your details and try again.";
+      }
+      alert(errorMsg);
     } finally {
       setLoading(false);
     }
