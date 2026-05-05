@@ -28,9 +28,10 @@ const JoinUs = () => {
       setSubmitted(true);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch (err) {
-      console.error("Registration error:", err.response?.data);
-      let errorMsg = "Registration failed: ";
+      console.error("Registration error:", err);
+      const status = err.response?.status;
       const backendErrors = err.response?.data;
+      let errorMsg = `Registration failed (Status: ${status || 'Network Error'}): `;
       
       if (backendErrors && typeof backendErrors === 'object') {
         const details = Object.entries(backendErrors)
@@ -38,7 +39,7 @@ const JoinUs = () => {
           .join('\n');
         errorMsg += details || "Check your details and try again.";
       } else {
-        errorMsg += "Check your details and try again.";
+        errorMsg += "The server encountered an error. Please ensure the backend is deployed and migrations are run.";
       }
       alert(errorMsg);
     } finally {
